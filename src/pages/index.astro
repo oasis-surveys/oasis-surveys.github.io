@@ -797,7 +797,7 @@ import Base from '../layouts/Base.astro';
                 <span class="text-white/40">─────────────────────────</span>
               </div>
               <div class="term-line hidden" data-type="output" data-delay="3400">
-                <span class="text-oasis-300">Share the link. Start collecting data.</span>
+                <span class="text-center block text-2xl mt-1">🚀</span>
               </div>
             </div>
           </div>
@@ -829,16 +829,24 @@ import Base from '../layouts/Base.astro';
       '3': [] // no typing, all outputs
     };
 
+    // Cascade base delays: terminal 1 → 0ms, terminal 2 → 5.5s, terminal 3 → 10.5s
+    const cascadeDelay: Record<string, number> = {
+      '1': 500,
+      '2': 6000,
+      '3': 11000
+    };
+
     function animateTerminal(terminal: HTMLElement) {
       const id = terminal.getAttribute('data-terminal') || '';
       const lines = terminal.querySelectorAll('.term-line');
       const typingTexts = terminalData[id] || [];
+      const baseDelay = cascadeDelay[id] || 0;
       let typingIdx = 0;
 
       lines.forEach((line, i) => {
         const el = line as HTMLElement;
         const type = el.getAttribute('data-type');
-        const delay = parseInt(el.getAttribute('data-delay') || '0');
+        const delay = baseDelay + parseInt(el.getAttribute('data-delay') || '0');
 
         setTimeout(() => {
           el.classList.remove('hidden');
@@ -873,20 +881,22 @@ import Base from '../layouts/Base.astro';
       });
     }
 
-    // Use IntersectionObserver to start animation when terminal is in view
+    // Use IntersectionObserver — observe the SECTION so all three start together
+    const termSection = document.getElementById('how-it-works');
+    let terminalsStarted = false;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const terminal = entry.target as HTMLElement;
-          if (!terminal.classList.contains('animated')) {
-            terminal.classList.add('animated');
-            animateTerminal(terminal);
-          }
+        if (entry.isIntersecting && !terminalsStarted) {
+          terminalsStarted = true;
+          document.querySelectorAll('.oasis-terminal').forEach(t => {
+            animateTerminal(t as HTMLElement);
+          });
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.oasis-terminal').forEach(t => observer.observe(t));
+    if (termSection) observer.observe(termSection);
   </script>
 
   <style>
