@@ -89,6 +89,7 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
           <nav class="lg:sticky lg:top-24 space-y-1 text-sm">
             <p class="font-semibold text-charcoal text-xs uppercase tracking-wider mb-3">On This Page</p>
             <a href="#prerequisites" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Prerequisites</a>
+            <a href="#responsible-use" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1 pl-3 text-xs border-l border-oasis-200">Responsible Use</a>
             <a href="#installation" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Installation</a>
             <a href="#configuration" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Configuration</a>
             <a href="#first-agent" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Your First Agent</a>
@@ -99,7 +100,6 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
             <a href="#auth" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Authentication</a>
             <a href="#telephony" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Telephony (Twilio)</a>
             <a href="#rag" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Knowledge Base (RAG)</a>
-            <a href="#responsible-use" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Responsible Use</a>
             <a href="#api-reference" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">API Reference</a>
           </nav>
         </aside>
@@ -126,6 +126,63 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
                 <span><strong class="text-charcoal">(For voice agents) STT &amp; TTS keys</strong>. Deepgram for speech-to-text, ElevenLabs for text-to-speech. Not needed for voice-to-voice models (OpenAI Realtime, Gemini Live) or text chat agents.</span>
               </li>
             </ul>
+
+            <!-- Responsible Use sub-section -->
+            <div id="responsible-use" class="mt-8 scroll-mt-24">
+              <div class="bg-amber-50 border-2 border-amber-300/60 rounded-xl p-6">
+                <div class="flex items-start gap-3 mb-4">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm font-bold text-amber-800 mb-1">Responsible Use of AI in Research</p>
+                    <p class="text-xs text-amber-700/80">Please read this before getting started.</p>
+                  </div>
+                </div>
+
+                <div class="space-y-3 text-sm text-slate-custom leading-relaxed">
+                  <p>
+                    OASIS gives researchers powerful capabilities: AI agents that can conduct adaptive conversations
+                    with human participants at scale. With that power comes a serious obligation to use it responsibly.
+                  </p>
+                  <p>
+                    <strong class="text-charcoal">OASIS is built for legitimate research.</strong> It is designed to advance science,
+                    understand communities, and improve how we collect qualitative and quantitative data.
+                  </p>
+                  <p class="font-semibold text-charcoal">OASIS must not be used for:</p>
+                  <ul class="space-y-1.5 ml-1">
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-600 mt-0.5 flex-shrink-0">✗</span>
+                      <span>Deception or manipulation of participants</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-600 mt-0.5 flex-shrink-0">✗</span>
+                      <span>Surveillance, profiling, or data harvesting without informed consent</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-600 mt-0.5 flex-shrink-0">✗</span>
+                      <span>Any application that harms, exploits, or undermines the well-being of participants</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-600 mt-0.5 flex-shrink-0">✗</span>
+                      <span>Circumventing ethics review processes or informed consent requirements</span>
+                    </li>
+                  </ul>
+                  <p>
+                    AI-enabled survey methods are a new and rapidly evolving field. Best practices are still being established, and
+                    the potential for misuse is real. As researchers and practitioners, we have a collective responsibility to
+                    set high ethical standards from the start, before norms calcify.
+                  </p>
+                  <p>
+                    If you're using OASIS in a study, make sure your use is covered by appropriate ethics review (e.g., IRB/ethics board approval),
+                    that participants are informed they are interacting with an AI, and that your data handling meets the standards of your institution
+                    and jurisdiction.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- ── Installation ───────────────────────────────── -->
@@ -383,66 +440,6 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
               generating a response. This is especially useful for topic-specific interviews where the agent
               needs factual grounding.
             </p>
-          </div>
-
-          <!-- ── Responsible Use ──────────────────────────────── -->
-          <div id="responsible-use" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
-              <span class="text-terracotta">#</span> Responsible Use of AI in Research
-            </h2>
-
-            <div class="bg-terracotta/5 border-2 border-terracotta/30 rounded-xl p-6">
-              <div class="flex items-start gap-3 mb-4">
-                <div class="flex-shrink-0 mt-0.5">
-                  <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-terracotta mb-2">This is important. Please read it.</p>
-                </div>
-              </div>
-
-              <div class="space-y-3 text-sm text-slate-custom leading-relaxed">
-                <p>
-                  OASIS gives researchers powerful capabilities: AI agents that can conduct nuanced, adaptive conversations
-                  with human participants at scale. With that power comes a serious obligation to use it responsibly.
-                </p>
-                <p>
-                  <strong class="text-charcoal">OASIS is built for legitimate research.</strong> It is designed to advance science,
-                  understand communities, and improve how we collect qualitative and quantitative data.
-                </p>
-                <p class="font-semibold text-charcoal">OASIS must not be used for:</p>
-                <ul class="space-y-1.5 ml-1">
-                  <li class="flex items-start gap-2">
-                    <span class="text-terracotta mt-0.5 flex-shrink-0">✗</span>
-                    <span>Deception or manipulation of participants</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-terracotta mt-0.5 flex-shrink-0">✗</span>
-                    <span>Surveillance, profiling, or data harvesting without informed consent</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-terracotta mt-0.5 flex-shrink-0">✗</span>
-                    <span>Any application that harms, exploits, or undermines the well-being of participants</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-terracotta mt-0.5 flex-shrink-0">✗</span>
-                    <span>Circumventing ethics review processes or informed consent requirements</span>
-                  </li>
-                </ul>
-                <p>
-                  AI-enabled survey methods are a new and rapidly evolving field. Best practices are still being established, and
-                  the potential for misuse is real. As researchers and practitioners, we have a collective responsibility to
-                  set high ethical standards from the start, before norms calcify.
-                </p>
-                <p>
-                  If you're using OASIS in a study, make sure your use is covered by appropriate ethics review (e.g., IRB/ethics board approval),
-                  that participants are informed they are interacting with an AI, and that your data handling meets the standards of your institution
-                  and jurisdiction.
-                </p>
-              </div>
-            </div>
           </div>
 
           <!-- ── API Reference ──────────────────────────────── -->
