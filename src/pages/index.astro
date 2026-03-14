@@ -86,6 +86,42 @@ import Base from '../layouts/Base.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════
+       EARLY DAYS NOTICE (auto-hides after June 2026)
+       ════════════════════════════════════════════════════════════ -->
+  <div id="launch-notice" class="hidden">
+    <div class="max-w-4xl mx-auto px-6 py-4">
+      <div class="relative bg-oasis-50/80 border border-oasis-200/60 rounded-xl px-5 py-4 flex items-start gap-3 animate-fade-in">
+        <div class="flex-shrink-0 mt-0.5">
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-oasis-500 text-white text-xs font-bold">!</span>
+        </div>
+        <div class="flex-1">
+          <p class="text-sm text-charcoal font-semibold mb-1">OASIS is a young project</p>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            OASIS launched publicly in March 2026. While the platform has been tested extensively across different virtual machines,
+            operating systems, and deployment setups, it is still a young project. You may encounter rough edges, especially in less
+            common configurations. If something breaks, please
+            <a href="https://github.com/oasis-surveys/oasis-platform/issues/new" class="text-oasis-500 hover:underline font-medium">open an issue</a>.
+          </p>
+        </div>
+        <button onclick="this.closest('#launch-notice').remove()" class="flex-shrink-0 text-slate-custom/60 hover:text-charcoal transition-colors p-1" aria-label="Dismiss">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show the launch notice only until June 30, 2026
+    const notice = document.getElementById('launch-notice');
+    const hideAfter = new Date('2026-07-01T00:00:00Z');
+    if (notice && new Date() < hideAfter) {
+      notice.classList.remove('hidden');
+    }
+  </script>
+
+  <!-- ════════════════════════════════════════════════════════════
        APPLICATIONS (Open, Free, Research-first)
        ════════════════════════════════════════════════════════════ -->
   <section class="py-24 bg-white">
@@ -394,44 +430,162 @@ import Base from '../layouts/Base.astro';
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Under the Hood</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Architecture</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">A Fully Open-Source Stack</h2>
         <p class="mt-4 text-slate-custom max-w-2xl mx-auto">
-          Five containers, one network. Everything is containerised, reproducible, and runs anywhere Docker does.
+          Every layer of OASIS is built on open-source technology. No proprietary lock-in anywhere in the stack.
+          Depending on your choice of LLM provider, the entire pipeline can run without a single closed-source dependency.
         </p>
       </div>
 
-      <!-- Architecture diagram (text-based) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
-          <div class="text-2xl mb-2">🔒</div>
-          <h4 class="font-semibold text-charcoal text-sm">Caddy</h4>
-          <p class="text-xs text-slate-custom mt-1">Reverse proxy, auto-SSL</p>
+      <!-- Open Source emphasis badge -->
+      <div class="flex justify-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-oasis-100/60 text-oasis-600 text-xs font-semibold px-4 py-2 rounded-full border border-oasis-200/50">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+          100% open-source infrastructure · swap any component · no vendor lock-in
         </div>
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
-          <div class="text-2xl mb-2">⚛️</div>
-          <h4 class="font-semibold text-charcoal text-sm">React</h4>
-          <p class="text-xs text-slate-custom mt-1">Dashboard + interview widget</p>
+      </div>
+
+      <!-- ── Detailed Architecture Diagram ── -->
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Outer frame — the Docker network -->
+        <div class="bg-white rounded-2xl border-2 border-oasis-200/80 p-6 md:p-8 shadow-sm">
+          <!-- Label -->
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-6 h-6 rounded bg-charcoal/10 flex items-center justify-center">
+              <svg class="w-4 h-4 text-charcoal/60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-charcoal/60 uppercase tracking-wider">Docker Internal Network</span>
+          </div>
+
+          <!-- Row 1: Caddy (entry point) -->
+          <div class="mb-4 animate-fade-in-up">
+            <div class="bg-gradient-to-r from-oasis-50 to-oasis-100/50 rounded-xl border border-oasis-200/60 p-4 flex items-center justify-between group hover:shadow-md transition-all">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-oasis-500 text-white flex items-center justify-center text-lg flex-shrink-0">🔒</div>
+                <div>
+                  <h4 class="font-semibold text-charcoal text-sm">Caddy 2</h4>
+                  <p class="text-xs text-slate-custom">Reverse proxy · Auto HTTPS · Let's Encrypt</p>
+                </div>
+              </div>
+              <div class="hidden sm:flex items-center gap-1.5 text-xs text-oasis-500 font-mono bg-white/60 px-3 py-1.5 rounded-lg">
+                <span>:80</span>
+                <span class="text-slate-custom">/</span>
+                <span>:443</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow down -->
+          <div class="flex justify-center my-1">
+            <svg class="w-5 h-8 text-oasis-300 animate-pulse" viewBox="0 0 20 32" fill="none">
+              <path d="M10 0 v24 M4 20 l6 8 l6-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Row 2: Frontend + Backend side by side -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 animate-fade-in-up" style="animation-delay: 100ms;">
+            <!-- Frontend -->
+            <div class="bg-white rounded-xl border border-oasis-100/60 p-4 group hover:shadow-md hover:border-oasis-300/60 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-oasis-500 group-hover:text-white transition-colors">⚛️</div>
+                <div>
+                  <h4 class="font-semibold text-charcoal text-sm">Frontend</h4>
+                  <p class="text-xs text-slate-custom">React · Tailwind CSS · Nginx</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">Admin Dashboard</span>
+                <span class="text-[10px] font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">Interview Widget</span>
+                <span class="text-[10px] font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">Chat UI</span>
+              </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="bg-white rounded-xl border border-oasis-100/60 p-4 group hover:shadow-md hover:border-oasis-300/60 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-lg bg-sand-300 text-sand-700 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-sand-500 group-hover:text-white transition-colors">⚡</div>
+                <div>
+                  <h4 class="font-semibold text-charcoal text-sm">Backend</h4>
+                  <p class="text-xs text-slate-custom">FastAPI · Pipecat · LiteLLM</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">REST API</span>
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">WebSockets</span>
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">AI Pipelines</span>
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">RAG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow down -->
+          <div class="flex justify-center my-1">
+            <svg class="w-5 h-8 text-oasis-300 animate-pulse" style="animation-delay: 500ms;" viewBox="0 0 20 32" fill="none">
+              <path d="M10 0 v24 M4 20 l6 8 l6-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Row 3: PostgreSQL + Redis -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in-up" style="animation-delay: 200ms;">
+            <!-- PostgreSQL -->
+            <div class="bg-white rounded-xl border border-oasis-100/60 p-4 group hover:shadow-md hover:border-oasis-300/60 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-oasis-500 group-hover:text-white transition-colors">🐘</div>
+                <div>
+                  <h4 class="font-semibold text-charcoal text-sm">PostgreSQL 16</h4>
+                  <p class="text-xs text-slate-custom">pgvector · Alembic migrations</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">Agents &amp; Studies</span>
+                <span class="text-[10px] font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">Transcripts</span>
+                <span class="text-[10px] font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">Embeddings</span>
+              </div>
+            </div>
+
+            <!-- Redis -->
+            <div class="bg-white rounded-xl border border-oasis-100/60 p-4 group hover:shadow-md hover:border-oasis-300/60 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-lg bg-sand-300 text-sand-700 flex items-center justify-center text-lg flex-shrink-0 group-hover:bg-sand-500 group-hover:text-white transition-colors">🔴</div>
+                <div>
+                  <h4 class="font-semibold text-charcoal text-sm">Redis 7</h4>
+                  <p class="text-xs text-slate-custom">In-memory store</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">Sessions</span>
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">Pub/Sub</span>
+                <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">API Key Cache</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
-          <div class="text-2xl mb-2">⚡</div>
-          <h4 class="font-semibold text-charcoal text-sm">FastAPI + Pipecat</h4>
-          <p class="text-xs text-slate-custom mt-1">WebSockets, AI pipelines</p>
+
+        <!-- External connections (outside the Docker box) -->
+        <div class="mt-6 flex flex-col sm:flex-row items-stretch gap-4 animate-fade-in-up" style="animation-delay: 350ms;">
+          <div class="flex-1 bg-charcoal/5 rounded-xl border border-dashed border-charcoal/20 p-4 text-center">
+            <p class="text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">External AI Providers (your choice)</p>
+            <div class="flex flex-wrap items-center justify-center gap-2">
+              <span class="text-[10px] font-medium bg-white text-slate-custom px-2.5 py-1 rounded-full border border-charcoal/10">OpenAI</span>
+              <span class="text-[10px] font-medium bg-white text-slate-custom px-2.5 py-1 rounded-full border border-charcoal/10">Google Gemini</span>
+              <span class="text-[10px] font-medium bg-white text-slate-custom px-2.5 py-1 rounded-full border border-charcoal/10">Anthropic</span>
+              <span class="text-[10px] font-medium bg-white text-slate-custom px-2.5 py-1 rounded-full border border-charcoal/10">Mistral</span>
+              <span class="text-[10px] font-medium bg-white text-slate-custom px-2.5 py-1 rounded-full border border-charcoal/10">Scaleway</span>
+              <span class="text-[10px] font-medium bg-white text-slate-custom px-2.5 py-1 rounded-full border border-oasis-200 text-oasis-600">Self-Hosted / Open-Source LLMs</span>
         </div>
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
-          <div class="text-2xl mb-2">🐘</div>
-          <h4 class="font-semibold text-charcoal text-sm">PostgreSQL + pgvector</h4>
-          <p class="text-xs text-slate-custom mt-1">Data, transcripts, RAG</p>
         </div>
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
-          <div class="text-2xl mb-2">🔴</div>
-          <h4 class="font-semibold text-charcoal text-sm">Redis</h4>
-          <p class="text-xs text-slate-custom mt-1">Sessions, pub/sub, cache</p>
         </div>
       </div>
 
       <!-- Pipeline paths -->
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-6">
+      <div class="mt-14 max-w-4xl mx-auto">
+        <h3 class="text-lg font-bold text-charcoal text-center mb-6">Interview Pipelines</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl border border-oasis-100/60 p-6 hover:shadow-md transition-shadow">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-8 h-8 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-sm font-bold">A</div>
             <h4 class="font-semibold text-charcoal">Voice-to-Voice Pipeline</h4>
@@ -447,7 +601,7 @@ import Base from '../layouts/Base.astro';
             <span class="bg-oasis-50 px-2 py-1 rounded">Speaker</span>
           </div>
         </div>
-        <div class="bg-white rounded-xl border border-oasis-100/60 p-6">
+          <div class="bg-white rounded-xl border border-oasis-100/60 p-6 hover:shadow-md transition-shadow">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-8 h-8 rounded-lg bg-sand-300 text-sand-700 flex items-center justify-center text-sm font-bold">B</div>
             <h4 class="font-semibold text-charcoal">Modular Pipeline</h4>
@@ -461,6 +615,7 @@ import Base from '../layouts/Base.astro';
             <span class="bg-sand-100 px-2 py-1 rounded">LLM (LiteLLM)</span>
             <span class="text-slate-custom">→</span>
             <span class="bg-sand-100 px-2 py-1 rounded">TTS</span>
+            </div>
           </div>
         </div>
       </div>
