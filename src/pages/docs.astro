@@ -1,0 +1,484 @@
+---
+import Base from '../layouts/Base.astro';
+
+const codeInstall = `<span class="text-oasis-300">$</span> git clone https://github.com/oasis-surveys/oasis.git
+<span class="text-oasis-300">$</span> cd oasis
+<span class="text-oasis-300">$</span> cp .env.example .env`;
+
+const codeDeploy = `<span class="text-oasis-300">$</span> docker compose up -d`;
+
+const codeEnv = `<span class="text-white/40"># ── Application ──</span>
+APP_NAME=OASIS
+SECRET_KEY=<span class="text-sand-400">change-me-to-a-random-secret-key</span>
+
+<span class="text-white/40"># ── Database ──</span>
+POSTGRES_USER=oasis
+POSTGRES_PASSWORD=<span class="text-sand-400">change-me</span>
+POSTGRES_DB=oasis
+
+<span class="text-white/40"># ── AI Providers (add what you need) ──</span>
+OPENAI_API_KEY=<span class="text-sand-400">sk-...</span>
+DEEPGRAM_API_KEY=<span class="text-sand-400">...</span>
+ELEVENLABS_API_KEY=<span class="text-sand-400">...</span>
+
+<span class="text-white/40"># ── Optional Providers ──</span>
+GOOGLE_API_KEY=<span class="text-sand-400">...</span>            <span class="text-white/40"># For Gemini Live</span>
+SCALEWAY_SECRET_KEY=<span class="text-sand-400">...</span>      <span class="text-white/40"># For Scaleway LLMs</span>
+ANTHROPIC_API_KEY=<span class="text-sand-400">...</span>        <span class="text-white/40"># For Claude</span>
+
+<span class="text-white/40"># ── Telephony (Optional) ──</span>
+TWILIO_ACCOUNT_SID=<span class="text-sand-400">...</span>
+TWILIO_AUTH_TOKEN=<span class="text-sand-400">...</span>
+TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1...</span>
+
+<span class="text-white/40"># ── Domain (use localhost for dev) ──</span>
+DOMAIN=localhost`;
+
+const codeJson = `<span class="text-white/40">// interview-guide.json</span>
+{
+  "questions": [
+    {
+      "text": "Can you tell me about your experience with...?",
+      "probes": [
+        "What specific aspects stood out?",
+        "How did that compare to your expectations?"
+      ],
+      "max_follow_ups": 3,
+      "transition": "Thank you, now I'd like to ask about..."
+    }
+  ],
+  "closing_message": "Thank you for your time."
+}`;
+
+const codeAuth = `<span class="text-white/40"># In .env:</span>
+AUTH_ENABLED=true
+AUTH_USERNAME=admin
+AUTH_PASSWORD=<span class="text-sand-400">your-secure-password</span>`;
+
+const codeTwilio = `TWILIO_ACCOUNT_SID=<span class="text-sand-400">AC...</span>
+TWILIO_AUTH_TOKEN=<span class="text-sand-400">...</span>
+TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
+---
+
+<Base
+  title="Documentation | OASIS"
+  description="Getting started with OASIS: prerequisites, installation, configuration, agent setup, and deployment options."
+  activeNav="docs"
+>
+
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-oasis-50 via-off-white to-sand-100 -z-10"></div>
+    <div class="max-w-4xl mx-auto px-6 py-24 md:py-28">
+      <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-3 animate-fade-in">Documentation</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-charcoal leading-tight animate-fade-in-up">
+        Getting Started
+      </h1>
+      <p class="mt-6 text-lg text-slate-custom max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 150ms;">
+        From zero to a running OASIS instance in about five minutes. All you need is Docker and at least one API key.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Docs Body ─────────────────────────────────────────── -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row gap-12">
+
+        <!-- Sidebar nav -->
+        <aside class="lg:w-56 flex-shrink-0">
+          <nav class="lg:sticky lg:top-24 space-y-1 text-sm">
+            <p class="font-semibold text-charcoal text-xs uppercase tracking-wider mb-3">On This Page</p>
+            <a href="#prerequisites" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Prerequisites</a>
+            <a href="#installation" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Installation</a>
+            <a href="#configuration" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Configuration</a>
+            <a href="#first-agent" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Your First Agent</a>
+            <a href="#structured" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Structured Interviews</a>
+            <a href="#text-agents" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Text Chat Agents</a>
+            <a href="#models" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Model Selection</a>
+            <a href="#deployment" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Deployment Options</a>
+            <a href="#auth" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Authentication</a>
+            <a href="#telephony" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Telephony (Twilio)</a>
+            <a href="#rag" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Knowledge Base (RAG)</a>
+            <a href="#api-reference" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">API Reference</a>
+          </nav>
+        </aside>
+
+        <!-- Main content -->
+        <div class="flex-1 min-w-0 prose-container">
+
+          <!-- ── Prerequisites ──────────────────────────────── -->
+          <div id="prerequisites" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Prerequisites
+            </h2>
+            <ul class="space-y-2 text-slate-custom text-sm leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><strong class="text-charcoal">Docker &amp; Docker Compose</strong>. OASIS runs as five containers. Install <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">Docker Desktop</a> (includes Compose v2) on macOS/Windows, or Docker Engine + Compose plugin on Linux.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><strong class="text-charcoal">At least one LLM API key</strong>. An OpenAI key is the easiest starting point. You can also use Google AI Studio, Anthropic, Mistral, Scaleway, or self-hosted endpoints.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><strong class="text-charcoal">(For voice agents) STT &amp; TTS keys</strong>. Deepgram for speech-to-text, ElevenLabs for text-to-speech. Not needed for voice-to-voice models (OpenAI Realtime, Gemini Live) or text chat agents.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── Installation ───────────────────────────────── -->
+          <div id="installation" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Installation
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Clone the repository and copy the environment template:
+            </p>
+            <pre class="!bg-charcoal text-sm !text-white/90 mb-4"><code set:html={codeInstall} /></pre>
+
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Then start everything:
+            </p>
+            <pre class="!bg-charcoal text-sm !text-white/90"><code set:html={codeDeploy} /></pre>
+            <p class="text-slate-custom text-sm leading-relaxed mt-4">
+              This pulls and builds five containers: <strong class="text-charcoal">Caddy</strong> (reverse proxy + auto-SSL),
+              <strong class="text-charcoal">React frontend</strong>, <strong class="text-charcoal">FastAPI backend</strong>,
+              <strong class="text-charcoal">PostgreSQL</strong> (with pgvector), and <strong class="text-charcoal">Redis</strong>.
+              The dashboard will be available at <code>http://localhost</code>.
+            </p>
+          </div>
+
+          <!-- ── Configuration ──────────────────────────────── -->
+          <div id="configuration" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Configuration
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              All configuration lives in a single <code>.env</code> file. Here's the essential structure:
+            </p>
+
+            <pre class="!bg-charcoal text-sm !text-white/90 mb-4"><code set:html={codeEnv} /></pre>
+
+            <div class="bg-oasis-50/50 rounded-xl border border-oasis-100/60 p-4 text-sm text-slate-custom">
+              <strong class="text-charcoal">💡 Tip:</strong> You can also set API keys at runtime via the
+              dashboard's Settings page, no container restart required. Keys set via the dashboard are stored
+              in Redis and take precedence over <code>.env</code> values.
+            </div>
+          </div>
+
+          <!-- ── Your First Agent ───────────────────────────── -->
+          <div id="first-agent" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Your First Agent
+            </h2>
+            <ol class="space-y-4 text-slate-custom text-sm leading-relaxed">
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                <span>Open the dashboard at <code>http://localhost</code> and click <strong class="text-charcoal">New Study</strong>.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                <span>Give your study a name and description. Click <strong class="text-charcoal">Create</strong>.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                <span>Inside the study, click <strong class="text-charcoal">New Agent</strong>. Choose <strong class="text-charcoal">Voice</strong> or <strong class="text-charcoal">Text</strong> modality.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                <span>Write your system prompt. This is the instruction that shapes the agent's behaviour. Tell it what to ask, how to probe, and when to wrap up.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                <span>Select your LLM model and pipeline type (voice-to-voice or modular STT→LLM→TTS).</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">6</span>
+                <span>Set the agent status to <strong class="text-charcoal">Active</strong> and save. Copy the interview link or embed code.</span>
+              </li>
+            </ol>
+          </div>
+
+          <!-- ── Structured Interviews ──────────────────────── -->
+          <div id="structured" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Structured Interviews
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              For semi-structured protocols, set the Interview Mode to <strong class="text-charcoal">Structured</strong>
+              when creating an agent. You can then define an interview guide with ordered questions, follow-up probes,
+              and transition messages.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              You can build the guide directly in the dashboard, or <strong class="text-charcoal">upload a CSV or JSON file</strong>.
+              Download the template from the dashboard to see the expected format:
+            </p>
+
+            <pre class="!bg-charcoal text-sm !text-white/90 mb-4"><code set:html={codeJson} /></pre>
+
+            <p class="text-slate-custom text-sm leading-relaxed">
+              The agent will follow the guide as a backbone but can adapt naturally. It probes when appropriate,
+              moves on after the configured number of follow-ups, and uses transition messages between questions.
+            </p>
+          </div>
+
+          <!-- ── Text Chat Agents ───────────────────────────── -->
+          <div id="text-agents" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Text Chat Agents
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              When you select <strong class="text-charcoal">Text</strong> as the modality, the agent conducts
+              interviews via a chat interface instead of voice. No STT or TTS keys are needed.
+            </p>
+            <ul class="space-y-2 text-slate-custom text-sm leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span>Choose from several avatar styles: Robot, Neutral, Male, Female, or None.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span>The transcript output format is identical to voice agents, same export, same analytics.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span>Works with any chat-compatible LLM (GPT-4.1, Claude, Gemini, etc.).</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── Model Selection ────────────────────────────── -->
+          <div id="models" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Model Selection
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              OASIS uses <a href="https://docs.litellm.ai" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">LiteLLM</a>
+              under the hood, which means you can use virtually any LLM provider with a unified API format.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-oasis-100">
+                    <th class="text-left py-2 pr-4 font-semibold text-charcoal">Pipeline</th>
+                    <th class="text-left py-2 pr-4 font-semibold text-charcoal">Supported Models</th>
+                  </tr>
+                </thead>
+                <tbody class="text-slate-custom">
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-3 pr-4 font-medium text-charcoal">Voice-to-Voice</td>
+                    <td class="py-3">OpenAI Realtime (gpt-4o-realtime, gpt-4o-mini-realtime), Gemini Live (gemini-2.5-flash-native-audio)</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-3 pr-4 font-medium text-charcoal">Modular (STT→LLM→TTS)</td>
+                    <td class="py-3">GPT-4.1, GPT-5, Claude 3.5/4, Gemini 2.5, Mistral, Scaleway, or any LiteLLM-compatible model</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-charcoal">Text Chat</td>
+                    <td class="py-3">Same as Modular, any chat-completion compatible model</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mt-4 bg-oasis-50/50 rounded-xl border border-oasis-100/60 p-4 text-sm text-slate-custom">
+              <strong class="text-charcoal">💡 Custom models:</strong> Select "Custom" in the model dropdown
+              and enter any valid <a href="https://docs.litellm.ai/docs/providers" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">LiteLLM model identifier</a>
+              (e.g., <code>azure/my-gpt4-deployment</code> or <code>vertex_ai/gemini-pro</code>).
+            </div>
+          </div>
+
+          <!-- ── Deployment Options ─────────────────────────── -->
+          <div id="deployment" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Deployment Options
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-2">🖥️ Local Development</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  <code>docker compose up -d</code> with <code>DOMAIN=localhost</code>.
+                  Access at <code>http://localhost</code>. Caddy serves without SSL.
+                </p>
+              </div>
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-2">🌍 Production (Any VPS)</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  Set <code>DOMAIN=your-domain.com</code> in <code>.env</code>. Point your DNS A-record to the server.
+                  Caddy auto-provisions Let's Encrypt SSL certificates.
+                </p>
+              </div>
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-2">☁️ GCP / Azure</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  Deploy on a VM or container instance. Use Vertex AI or Azure OpenAI endpoints by setting the
+                  corresponding environment variables.
+                </p>
+              </div>
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-2">🇪🇺 Scaleway (EU)</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  For European data residency. Use Scaleway's LLM-as-a-Service with <code>SCALEWAY_SECRET_KEY</code>
+                  for GDPR-compliant deployments.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Authentication ─────────────────────────────── -->
+          <div id="auth" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Authentication
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Authentication is <strong class="text-charcoal">off by default</strong>. To enable basic login protection for the dashboard:
+            </p>
+            <pre class="!bg-charcoal text-sm !text-white/90 mb-4"><code set:html={codeAuth} /></pre>
+            <p class="text-slate-custom text-sm leading-relaxed">
+              Then recreate the backend container: <code>docker compose up -d --force-recreate backend</code>.
+              Interview links remain publicly accessible. Authentication only protects the admin dashboard.
+            </p>
+          </div>
+
+          <!-- ── Telephony ──────────────────────────────────── -->
+          <div id="telephony" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Telephony (Twilio)
+            </h2>
+
+            <div class="bg-sand-100/50 rounded-xl border border-sand-200/60 p-4 text-sm text-slate-custom mb-4">
+              <strong class="text-sand-700">⚠️ Beta:</strong> Telephony integration is currently in beta.
+              Only <strong class="text-charcoal">incoming calls</strong> are supported. Participants call your Twilio number.
+              Outbound call scheduling and call routing are not yet available.
+            </div>
+
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              OASIS supports telephone-based interviews via Twilio Media Streams. Add your Twilio credentials
+              to <code>.env</code>, assign a phone number to an agent in the dashboard, and participants can
+              call in for voice interviews.
+            </p>
+            <pre class="!bg-charcoal text-sm !text-white/90"><code set:html={codeTwilio} /></pre>
+            <p class="text-slate-custom text-sm leading-relaxed mt-4">
+              The backend exposes a TwiML webhook that Twilio calls when someone dials your number.
+              Audio is streamed over WebSockets using Pipecat's <code>TwilioFrameSerializer</code>.
+            </p>
+          </div>
+
+          <!-- ── RAG ────────────────────────────────────────── -->
+          <div id="rag" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> Knowledge Base (RAG)
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Upload documents to a study's knowledge base to give your agent context about the research topic.
+              Documents are chunked, embedded using OpenAI's <code>text-embedding-3-small</code>, and stored in
+              PostgreSQL via pgvector for similarity search.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed">
+              During an interview, the agent can query the knowledge base to retrieve relevant context before
+              generating a response. This is especially useful for topic-specific interviews where the agent
+              needs factual grounding.
+            </p>
+          </div>
+
+          <!-- ── API Reference ──────────────────────────────── -->
+          <div id="api-reference" class="mb-16 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+              <span class="text-oasis-500">#</span> API Reference
+            </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              The FastAPI backend serves auto-generated OpenAPI documentation. Once your instance is running:
+            </p>
+            <ul class="space-y-2 text-slate-custom text-sm leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><strong class="text-charcoal">Swagger UI:</strong> <code>http://localhost/api/docs</code></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><strong class="text-charcoal">ReDoc:</strong> <code>http://localhost/api/redoc</code></span>
+              </li>
+            </ul>
+            <p class="text-slate-custom text-sm leading-relaxed mt-4">
+              Key endpoints include:
+            </p>
+
+            <div class="mt-4 overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-oasis-100">
+                    <th class="text-left py-2 pr-4 font-semibold text-charcoal">Method</th>
+                    <th class="text-left py-2 pr-4 font-semibold text-charcoal">Endpoint</th>
+                    <th class="text-left py-2 font-semibold text-charcoal">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="text-slate-custom font-mono text-xs">
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">GET</span></td>
+                    <td class="py-2 pr-4">/api/studies</td>
+                    <td class="py-2 font-sans">List all studies</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">POST</span></td>
+                    <td class="py-2 pr-4">/api/studies/&#123;id&#125;/agents</td>
+                    <td class="py-2 font-sans">Create an agent</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-sand-300 text-sand-700 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">WS</span></td>
+                    <td class="py-2 pr-4">/ws/interview/&#123;widget_key&#125;</td>
+                    <td class="py-2 font-sans">Voice interview WebSocket</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-sand-300 text-sand-700 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">WS</span></td>
+                    <td class="py-2 pr-4">/ws/chat/&#123;widget_key&#125;</td>
+                    <td class="py-2 font-sans">Text chat WebSocket</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">GET</span></td>
+                    <td class="py-2 pr-4">/api/sessions/&#123;id&#125;/transcript</td>
+                    <td class="py-2 font-sans">Get diarised transcript</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────── -->
+  <section class="py-16 bg-off-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-charcoal mb-3">Need Help?</h2>
+      <p class="text-slate-custom mb-6 text-sm">
+        Found a bug, have a question, or want to request a feature?
+        Open an issue on GitHub or reach out directly.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="https://github.com/oasis-surveys/oasis/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-charcoal hover:bg-charcoal/90 text-white font-semibold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 text-sm"
+        >
+          Open an Issue
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
+        </a>
+        <a
+          href="mailto:max.lang@stx.ox.ac.uk"
+          class="inline-flex items-center gap-2 bg-oasis-500 hover:bg-oasis-600 text-white font-semibold px-6 py-3 rounded-xl transition-all shadow-lg shadow-oasis-500/20 hover:-translate-y-0.5 text-sm"
+        >
+          Email Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>

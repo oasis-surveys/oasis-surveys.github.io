@@ -1,0 +1,657 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base activeNav="home">
+
+  <!-- ════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden">
+    <!-- Subtle gradient bg -->
+    <div class="absolute inset-0 bg-gradient-to-br from-oasis-50 via-off-white to-sand-100 -z-10"></div>
+    <!-- Decorative circles -->
+    <div class="absolute top-20 -left-32 w-96 h-96 bg-oasis-200/30 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-10 right-0 w-80 h-80 bg-sand-300/20 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="flex flex-col items-center text-center">
+        <!-- Logo -->
+        <img
+          src="/oasis-logo.png"
+          alt="OASIS"
+          class="w-40 h-40 md:w-52 md:h-52 mb-8 animate-float drop-shadow-lg"
+        />
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-oasis-100/60 text-oasis-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 animate-fade-in">
+          <span class="w-2 h-2 bg-oasis-400 rounded-full animate-pulse"></span>
+          Open Source · Self-Hosted · Research-First
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-charcoal animate-fade-in-up max-w-4xl">
+          Open Agentic Survey<br/>
+          <span class="text-oasis-500">Interview System</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="mt-6 text-lg md:text-xl text-slate-custom max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 150ms;">
+          Deploy AI-powered conversational interviewers in minutes.
+          Voice agents, text chat, structured protocols. Your infrastructure, your data, your models.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up" style="animation-delay: 300ms;">
+          <a
+            href="/docs"
+            class="inline-flex items-center gap-2 bg-oasis-500 hover:bg-oasis-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-oasis-500/20 hover:shadow-oasis-500/30 hover:-translate-y-0.5"
+          >
+            Get Started
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="https://github.com/oasis-surveys/oasis"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-charcoal hover:bg-charcoal/90 text-white font-semibold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Open Science tagline -->
+        <div class="mt-14 flex flex-wrap items-center justify-center gap-3 animate-fade-in-up" style="animation-delay: 450ms;">
+          <span class="inline-flex items-center gap-1.5 bg-oasis-50 text-oasis-600 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-oasis-200/50">
+            🔬 Built for Researchers
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-oasis-50 text-oasis-600 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-oasis-200/50">
+            🔓 Open Science
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-oasis-50 text-oasis-600 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-oasis-200/50">
+            🏠 Self-Hosted
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-sand-100 text-sand-700 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-sand-200/50">
+            🆓 Free &amp; Non-Commercial
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       APPLICATIONS (Open, Free, Research-first)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Open. Free. Built for Research.</h2>
+        <p class="mt-4 text-slate-custom max-w-2xl mx-auto">
+          An open-source platform purpose-built for qualitative data collection, from in-depth interviews to structured survey protocols.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-oasis-50 text-oasis-500 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal mb-2">Qualitative Surveys</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Conduct in-depth interviews at scale. Define your protocol, let the agent probe, and get publication-ready transcripts.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-oasis-50 text-oasis-500 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal mb-2">Semi-Structured &amp; Open Interviews</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Preset questions with adaptive follow-up probing, or fully open-ended conversations. You set the structure, the agent stays on track.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-oasis-50 text-oasis-500 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal mb-2">Data Collection at Scale</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Whether it's 10 or 10,000 interviews, manage studies, track participants with identifiers, and export structured data for analysis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       DEMO: Video Carousel
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-off-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Preview</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">See It in Action</h2>
+      <p class="text-slate-custom max-w-xl mx-auto mb-10 text-sm">
+        Three steps from setup to insights. Click through the walkthrough below.
+      </p>
+
+      <!-- Carousel -->
+      <div class="relative" id="demo-carousel">
+        <!-- Tabs -->
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <button data-slide="0" class="carousel-tab active text-sm font-semibold px-4 py-2 rounded-lg transition-all bg-oasis-500 text-white shadow-md">
+            1 · Setup Study
+          </button>
+          <button data-slide="1" class="carousel-tab text-sm font-semibold px-4 py-2 rounded-lg transition-all bg-oasis-50 text-oasis-600 hover:bg-oasis-100">
+            2 · Configure Agent
+          </button>
+          <button data-slide="2" class="carousel-tab text-sm font-semibold px-4 py-2 rounded-lg transition-all bg-oasis-50 text-oasis-600 hover:bg-oasis-100">
+            3 · Collect Data
+          </button>
+        </div>
+
+        <!-- Slides -->
+        <div class="relative overflow-hidden rounded-2xl border-2 border-oasis-100 bg-charcoal">
+          <!-- Slide 0 -->
+          <div class="carousel-slide transition-opacity duration-500" data-index="0">
+            <video
+              class="w-full aspect-video object-cover"
+              src="/demo1-fast.mp4"
+              muted
+              playsinline
+              autoplay
+            ></video>
+          </div>
+
+          <!-- Slide 1 -->
+          <div class="carousel-slide transition-opacity duration-500 hidden" data-index="1">
+            <video
+              class="w-full aspect-video object-cover"
+              src="/demo2-fast.mp4"
+              muted
+              playsinline
+            ></video>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-slide transition-opacity duration-500 hidden" data-index="2">
+            <video
+              class="w-full aspect-video object-cover"
+              src="/demo3-fast.mp4"
+              muted
+              playsinline
+            ></video>
+          </div>
+        </div>
+
+        <!-- Navigation arrows -->
+        <div class="flex items-center justify-center gap-4 mt-6">
+          <button id="carousel-prev" class="w-10 h-10 rounded-full bg-oasis-50 text-oasis-500 hover:bg-oasis-100 flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <div class="flex items-center gap-2" id="carousel-dots">
+            <span class="w-2.5 h-2.5 rounded-full bg-oasis-500 transition-colors"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-oasis-200 transition-colors"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-oasis-200 transition-colors"></span>
+          </div>
+          <button id="carousel-next" class="w-10 h-10 rounded-full bg-oasis-50 text-oasis-500 hover:bg-oasis-100 flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Carousel logic with video auto-advance
+    const slides = document.querySelectorAll('.carousel-slide');
+    const tabs = document.querySelectorAll('.carousel-tab');
+    const dots = document.querySelectorAll('#carousel-dots span');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    let current = 0;
+
+    function goTo(idx: number) {
+      if (idx < 0) idx = slides.length - 1;
+      if (idx >= slides.length) idx = 0;
+
+      slides.forEach((s, i) => {
+        const el = s as HTMLElement;
+        const video = el.querySelector('video');
+        if (i === idx) {
+          el.classList.remove('hidden');
+          if (video) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          }
+        } else {
+          el.classList.add('hidden');
+          if (video) {
+            video.pause();
+          }
+        }
+      });
+
+      tabs.forEach((t, i) => {
+        if (i === idx) {
+          t.classList.remove('bg-oasis-50', 'text-oasis-600', 'hover:bg-oasis-100');
+          t.classList.add('bg-oasis-500', 'text-white', 'shadow-md');
+        } else {
+          t.classList.remove('bg-oasis-500', 'text-white', 'shadow-md');
+          t.classList.add('bg-oasis-50', 'text-oasis-600', 'hover:bg-oasis-100');
+        }
+      });
+
+      dots.forEach((d, i) => {
+        d.classList.toggle('bg-oasis-500', i === idx);
+        d.classList.toggle('bg-oasis-200', i !== idx);
+      });
+
+      current = idx;
+    }
+
+    // Auto-advance when a video ends
+    slides.forEach((s, i) => {
+      const video = s.querySelector('video');
+      if (video) {
+        video.addEventListener('ended', () => {
+          // Advance to next slide (wraps from 3rd back to 1st)
+          goTo(i + 1);
+        });
+      }
+    });
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const slideIdx = parseInt(tab.getAttribute('data-slide') || '0');
+        goTo(slideIdx);
+      });
+    });
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+  </script>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       FEATURES
+       ════════════════════════════════════════════════════════════ -->
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Everything You Need for AI Interviews</h2>
+        <p class="mt-4 text-slate-custom max-w-2xl mx-auto">
+          Voice conversations, text chat, structured protocols, all in one self-hosted platform with full model flexibility.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+        <!-- Feature 1 -->
+        <div class="group bg-white rounded-2xl p-6 border border-oasis-100/60 hover:border-oasis-300/60 transition-all hover:shadow-lg hover:shadow-oasis-100/50 animate-fade-in-up">
+          <div class="w-12 h-12 rounded-xl bg-oasis-100 text-oasis-500 flex items-center justify-center mb-4 group-hover:bg-oasis-500 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Voice Agents</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Real-time voice-to-voice interviews using OpenAI Realtime, Gemini Live, or modular STT→LLM→TTS pipelines with Deepgram + ElevenLabs.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="group bg-white rounded-2xl p-6 border border-oasis-100/60 hover:border-oasis-300/60 transition-all hover:shadow-lg hover:shadow-oasis-100/50 animate-fade-in-up">
+          <div class="w-12 h-12 rounded-xl bg-oasis-100 text-oasis-500 flex items-center justify-center mb-4 group-hover:bg-oasis-500 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Text Chat Agents</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Clean chat interface for text-based interviews. Customisable avatars, same structured data output, no audio required.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="group bg-white rounded-2xl p-6 border border-oasis-100/60 hover:border-oasis-300/60 transition-all hover:shadow-lg hover:shadow-oasis-100/50 animate-fade-in-up">
+          <div class="w-12 h-12 rounded-xl bg-oasis-100 text-oasis-500 flex items-center justify-center mb-4 group-hover:bg-oasis-500 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Structured Protocols</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Semi-structured interview guides with preset questions, follow-up probes, and configurable transitions. Upload protocols via CSV or JSON.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="group bg-white rounded-2xl p-6 border border-oasis-100/60 hover:border-oasis-300/60 transition-all hover:shadow-lg hover:shadow-oasis-100/50 animate-fade-in-up">
+          <div class="w-12 h-12 rounded-xl bg-sand-300 text-sand-700 flex items-center justify-center mb-4 group-hover:bg-sand-500 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Self-Hosted</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Your data never leaves your infrastructure. One <code>docker compose up</code> and you're live. Deploy on-prem, GCP, Azure, or Scaleway.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="group bg-white rounded-2xl p-6 border border-oasis-100/60 hover:border-oasis-300/60 transition-all hover:shadow-lg hover:shadow-oasis-100/50 animate-fade-in-up">
+          <div class="w-12 h-12 rounded-xl bg-sand-300 text-sand-700 flex items-center justify-center mb-4 group-hover:bg-sand-500 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Any Model, Any Provider</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            GPT-4.1, GPT-5, Gemini 2.5, Claude, Mistral, open-source models. Use whatever fits your research. Custom model identifiers supported via LiteLLM.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="group bg-white rounded-2xl p-6 border border-oasis-100/60 hover:border-oasis-300/60 transition-all hover:shadow-lg hover:shadow-oasis-100/50 animate-fade-in-up">
+          <div class="w-12 h-12 rounded-xl bg-sand-300 text-sand-700 flex items-center justify-center mb-4 group-hover:bg-sand-500 group-hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Research-Grade Output</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Diarised transcripts, session analytics, token usage, timestamps, all stored in PostgreSQL. Export your data whenever you need it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       ARCHITECTURE
+       ════════════════════════════════════════════════════════════ -->
+  <section id="architecture" class="py-24 bg-off-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Under the Hood</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Architecture</h2>
+        <p class="mt-4 text-slate-custom max-w-2xl mx-auto">
+          Five containers, one network. Everything is containerised, reproducible, and runs anywhere Docker does.
+        </p>
+      </div>
+
+      <!-- Architecture diagram (text-based) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
+          <div class="text-2xl mb-2">🔒</div>
+          <h4 class="font-semibold text-charcoal text-sm">Caddy</h4>
+          <p class="text-xs text-slate-custom mt-1">Reverse proxy, auto-SSL</p>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
+          <div class="text-2xl mb-2">⚛️</div>
+          <h4 class="font-semibold text-charcoal text-sm">React</h4>
+          <p class="text-xs text-slate-custom mt-1">Dashboard + interview widget</p>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
+          <div class="text-2xl mb-2">⚡</div>
+          <h4 class="font-semibold text-charcoal text-sm">FastAPI + Pipecat</h4>
+          <p class="text-xs text-slate-custom mt-1">WebSockets, AI pipelines</p>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
+          <div class="text-2xl mb-2">🐘</div>
+          <h4 class="font-semibold text-charcoal text-sm">PostgreSQL + pgvector</h4>
+          <p class="text-xs text-slate-custom mt-1">Data, transcripts, RAG</p>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 text-center hover:shadow-md transition-shadow">
+          <div class="text-2xl mb-2">🔴</div>
+          <h4 class="font-semibold text-charcoal text-sm">Redis</h4>
+          <p class="text-xs text-slate-custom mt-1">Sessions, pub/sub, cache</p>
+        </div>
+      </div>
+
+      <!-- Pipeline paths -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-sm font-bold">A</div>
+            <h4 class="font-semibold text-charcoal">Voice-to-Voice Pipeline</h4>
+          </div>
+          <p class="text-sm text-slate-custom leading-relaxed mb-3">
+            Audio streams directly to a multimodal LLM endpoint. Sub-second latency, natural conversation.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-mono text-oasis-500">
+            <span class="bg-oasis-50 px-2 py-1 rounded">Mic</span>
+            <span class="text-slate-custom">→</span>
+            <span class="bg-oasis-50 px-2 py-1 rounded">OpenAI Realtime / Gemini Live</span>
+            <span class="text-slate-custom">→</span>
+            <span class="bg-oasis-50 px-2 py-1 rounded">Speaker</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-sand-300 text-sand-700 flex items-center justify-center text-sm font-bold">B</div>
+            <h4 class="font-semibold text-charcoal">Modular Pipeline</h4>
+          </div>
+          <p class="text-sm text-slate-custom leading-relaxed mb-3">
+            Chain independent services: speech-to-text, LLM reasoning, text-to-speech. Full control over each component.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-mono text-sand-600">
+            <span class="bg-sand-100 px-2 py-1 rounded">STT</span>
+            <span class="text-slate-custom">→</span>
+            <span class="bg-sand-100 px-2 py-1 rounded">LLM (LiteLLM)</span>
+            <span class="text-slate-custom">→</span>
+            <span class="bg-sand-100 px-2 py-1 rounded">TTS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       HOW IT WORKS
+       ════════════════════════════════════════════════════════════ -->
+  <section id="how-it-works" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Setup</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Three Steps to Your First Interview</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="relative text-center">
+          <div class="w-14 h-14 rounded-full bg-oasis-500 text-white flex items-center justify-center mx-auto mb-5 text-xl font-bold shadow-lg shadow-oasis-500/20">1</div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Clone &amp; Configure</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Clone the repository, copy <code>.env.example</code> to <code>.env</code>, and add your API keys. That's your entire infrastructure config.
+          </p>
+          <div class="mt-4 bg-charcoal rounded-xl p-4 text-left">
+            <code class="text-sm text-oasis-300 font-mono">
+              <span class="text-white/40">$</span> git clone https://github.com/oasis-surveys/oasis<br/>
+              <span class="text-white/40">$</span> cp .env.example .env<br/>
+              <span class="text-white/40">$</span> nano .env
+            </code>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative text-center">
+          <div class="w-14 h-14 rounded-full bg-oasis-500 text-white flex items-center justify-center mx-auto mb-5 text-xl font-bold shadow-lg shadow-oasis-500/20">2</div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Deploy</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            One command spins up five containers: reverse proxy, frontend dashboard, backend API, PostgreSQL, and Redis.
+          </p>
+          <div class="mt-4 bg-charcoal rounded-xl p-4 text-left">
+            <code class="text-sm text-oasis-300 font-mono">
+              <span class="text-white/40">$</span> docker compose up -d
+            </code>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative text-center">
+          <div class="w-14 h-14 rounded-full bg-oasis-500 text-white flex items-center justify-center mx-auto mb-5 text-xl font-bold shadow-lg shadow-oasis-500/20">3</div>
+          <h3 class="font-semibold text-charcoal text-lg mb-2">Create &amp; Share</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Open the dashboard, define your agent's prompt and model, and share the interview link (or embed it in Qualtrics).
+          </p>
+          <div class="mt-4 bg-charcoal rounded-xl p-4 text-left">
+            <code class="text-sm text-sand-400 font-mono">
+              → Dashboard live at localhost:80<br/>
+              → Interview link ready to share
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       LICENSE (short + expandable)
+       ════════════════════════════════════════════════════════════ -->
+  <section id="license" class="py-24 bg-off-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">License</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Open Source, Transparent Research</h2>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-oasis-100/60 p-8">
+        <p class="text-slate-custom leading-relaxed mb-4">
+          OASIS is released under a <strong class="text-charcoal">non-commercial research license</strong>.
+          You are free to use, modify, and share OASIS for academic and research purposes.
+        </p>
+        <ul class="space-y-2 text-sm text-slate-custom mb-6">
+          <li class="flex items-start gap-2">
+            <span class="text-oasis-500 mt-0.5">✓</span>
+            Use freely for academic research and teaching
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-oasis-500 mt-0.5">✓</span>
+            Modify and extend for your own studies
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-oasis-500 mt-0.5">✓</span>
+            Contribute improvements back to the community
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-terracotta mt-0.5">✗</span>
+            Commercial use without explicit approval
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-terracotta mt-0.5">✗</span>
+            Funding applications built on OASIS without author consent
+          </li>
+        </ul>
+
+        <!-- Expandable detail -->
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-medium text-oasis-500 hover:text-oasis-600 transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+            Read the full license terms
+          </summary>
+          <div class="mt-4 pt-4 border-t border-oasis-100/60 text-sm text-slate-custom leading-relaxed space-y-3">
+            <p>
+              <strong class="text-charcoal">OASIS Non-Commercial Research License (ONCRL) v1.0</strong>
+            </p>
+            <p>
+              Copyright &copy; 2025–{new Date().getFullYear()} Max M. Lang. All rights reserved.
+            </p>
+            <p>
+              Permission is hereby granted, free of charge, to any person or institution obtaining a copy of this software
+              and associated documentation files (the "Software"), to use, copy, modify, and distribute the Software for
+              <strong class="text-charcoal">non-commercial academic and research purposes only</strong>, subject to the following conditions:
+            </p>
+            <ol class="list-decimal ml-5 space-y-2">
+              <li>
+                <strong class="text-charcoal">Non-Commercial Use.</strong> The Software shall not be used, in whole or in part,
+                for any commercial purpose. This includes but is not limited to: selling, licensing, or offering the Software
+                as a paid service; incorporating the Software into a commercial product; or using the Software to generate revenue.
+              </li>
+              <li>
+                <strong class="text-charcoal">Funding &amp; Grants.</strong> If the Software or a derivative thereof forms a
+                substantial component of a funding application, grant proposal, or similar undertaking, the applicant must
+                obtain prior written approval from the copyright holder.
+              </li>
+              <li>
+                <strong class="text-charcoal">Attribution.</strong> All copies or substantial portions of the Software must
+                include this copyright notice and permission notice. Any published work making use of the Software must cite
+                the OASIS project and its author.
+              </li>
+              <li>
+                <strong class="text-charcoal">Contributions.</strong> Contributions to the project are encouraged and welcome.
+                By submitting a contribution, you agree that your contribution is licensed under the same terms as this license.
+              </li>
+              <li>
+                <strong class="text-charcoal">No Warranty.</strong> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+                AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM
+                THE SOFTWARE.
+              </li>
+            </ol>
+            <p>
+              For commercial licensing inquiries, collaborations, or questions, contact:
+              <a href="mailto:max.lang@stx.ox.ac.uk" class="text-oasis-500 hover:underline">max.lang@stx.ox.ac.uk</a>
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CTA
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-gradient-to-r from-oasis-600 via-oasis-500 to-oasis-400 text-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Run Your First Interview?</h2>
+      <p class="text-oasis-100 mb-8 text-lg">
+        Clone the repo, add your API keys, and deploy. It takes about five minutes.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/docs"
+          class="inline-flex items-center gap-2 bg-white text-oasis-600 font-semibold px-7 py-3.5 rounded-xl transition-all hover:bg-oasis-50 hover:-translate-y-0.5 shadow-lg"
+        >
+          Read the Docs
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a
+          href="mailto:max.lang@stx.ox.ac.uk"
+          class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl transition-all backdrop-blur hover:-translate-y-0.5"
+        >
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>

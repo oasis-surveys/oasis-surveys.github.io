@@ -1,0 +1,283 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About | OASIS"
+  description="Why OASIS exists and who's building it."
+  activeNav="about"
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-oasis-50 via-off-white to-sand-100 -z-10"></div>
+    <div class="absolute top-20 -right-32 w-96 h-96 bg-oasis-200/20 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-4xl mx-auto px-6 py-24 md:py-28">
+      <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-3 animate-fade-in">About</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-charcoal leading-tight animate-fade-in-up">
+        Why OASIS Exists
+      </h1>
+      <p class="mt-6 text-lg text-slate-custom max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 150ms;">
+        There's no shortage of conversational AI platforms. What's missing is one that puts survey methodology first.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── The Short Version ───────────────────────────────── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-charcoal mb-5">The Short Version</h2>
+      <p class="text-slate-custom leading-relaxed mb-4">
+        In several research projects, colleagues and I have relied on commercial tools for conversational AI agents.
+        They're good, and in many ways impressive. But they don't really cater to research designs: probing logic,
+        follow-up strategies, semi-structured and unstructured interview protocols, participant identifiers, or the
+        kind of pricing model that works for an unfunded PhD project.
+      </p>
+      <p class="text-slate-custom leading-relaxed mb-6">
+        That's why I started OASIS. It's not trying to compete with commercial platforms.
+        It's trying to be an open-source alternative for transparent research, a <em>survey interview</em> platform
+        that runs entirely inside your Docker environment, talks to whichever AI providers you choose, and treats
+        research methodology as a first-class concern rather than an afterthought.
+      </p>
+
+      <details class="group">
+        <summary class="cursor-pointer text-sm font-medium text-oasis-500 hover:text-oasis-600 transition-colors flex items-center gap-1.5">
+          <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+          Read the longer version
+        </summary>
+        <div class="mt-5 pt-5 border-t border-oasis-100/60 space-y-4 text-slate-custom leading-relaxed text-sm">
+          <p>
+            The gap isn't about capability. LLMs can already conduct nuanced, adaptive dialogues.
+            It's about tooling. You can subscribe to an enterprise platform that handles everything,
+            but then your data lives on someone else's servers, your prompts are proprietary, and
+            switching providers means starting from scratch.
+          </p>
+          <p>
+            Alternatively, you can stitch together WebSockets, STT engines, LLM APIs, and TTS services
+            yourself, which is fine if you have a software engineering team, but most research groups don't.
+          </p>
+          <p>
+            OASIS sits in between. It handles the engineering (audio pipelines, real-time transcription,
+            session management, model routing) so researchers can focus on what they're actually good at:
+            designing interview protocols, crafting questions, and interpreting data.
+          </p>
+          <p>
+            Importantly, OASIS can run in your own Docker environment. If your deployment calls external
+            AI APIs (OpenAI, Google, etc.), that's your choice of provider. OASIS itself never phones home
+            and never sees your data. For full isolation, you can point it at self-hosted models on GCP,
+            Azure, or Scaleway.
+          </p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ── Principles ──────────────────────────────────────── -->
+  <section class="py-20 bg-off-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-charcoal mb-8 text-center">Design Principles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="bg-white rounded-xl p-5 border border-oasis-100/60">
+          <h3 class="font-semibold text-charcoal text-sm mb-1">Full sovereignty over data</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Your transcripts, your database, your servers.
+            Everything runs inside your Docker deployment.             External API calls to AI providers are your
+            explicit configuration choice. OASIS itself doesn't transmit data anywhere.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-5 border border-oasis-100/60">
+          <h3 class="font-semibold text-charcoal text-sm mb-1">Provider agnosticism</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            OpenAI, Google, Anthropic, Mistral, Scaleway, or your own fine-tuned model on
+            GCP Vertex AI. OASIS doesn't lock you in. Swap models with a config change.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-5 border border-oasis-100/60">
+          <h3 class="font-semibold text-charcoal text-sm mb-1">Research-first design</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Semi-structured protocols, participant tracking, diarised transcripts,
+            session analytics. The features survey researchers actually need, not chatbot novelties.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-5 border border-sand-200/60">
+          <h3 class="font-semibold text-charcoal text-sm mb-1">European data residency</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Deploy on Scaleway or any EU-based provider for GDPR compliance.
+            Self-hosting means you choose the jurisdiction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Team ──────────────────────────────────────────────── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Team</p>
+        <h2 class="text-3xl font-bold text-charcoal">Who's Building This</h2>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-off-white rounded-2xl border border-oasis-100/60 p-8 flex flex-col sm:flex-row items-start gap-6">
+          <!-- Photo -->
+          <img
+            src="https://avatars.githubusercontent.com/u/65287841?v=4"
+            alt="Max M. Lang"
+            class="w-24 h-24 rounded-2xl object-cover shadow-md flex-shrink-0"
+          />
+          <!-- Bio -->
+          <div>
+            <h3 class="text-xl font-bold text-charcoal">Max M. Lang</h3>
+            <p class="text-sm text-oasis-500 font-medium mb-3">DPhil Researcher · University of Oxford</p>
+            <p class="text-sm text-slate-custom leading-relaxed mb-4">
+              I study how we gather high-quality data and extract valuable information to answer important
+              questions. My work spans spatial epidemiology at Oxford, survey methodology at LMU Munich,
+              and engineering projects including automated telephone surveys with
+              <a href="https://60decibels.com" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">60&nbsp;Decibels</a>
+              (20,000+ interviews and counting) and adaptive AI interviewers.
+            </p>
+            <p class="text-sm text-slate-custom leading-relaxed mb-5">
+              OASIS is what I wished existed when I started this work.
+            </p>
+
+            <!-- Links -->
+            <div class="flex items-center gap-4">
+              <a href="https://github.com/MaxMLang" target="_blank" rel="noopener noreferrer" class="text-slate-custom hover:text-oasis-500 transition-colors" aria-label="GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://maxmlang.github.io" target="_blank" rel="noopener noreferrer" class="text-slate-custom hover:text-oasis-500 transition-colors" aria-label="Website">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+              </a>
+              <a href="https://scholar.google.com/citations?user=MaxMLang" target="_blank" rel="noopener noreferrer" class="text-slate-custom hover:text-oasis-500 transition-colors" aria-label="Google Scholar">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
+              </a>
+              <a href="mailto:max.lang@stx.ox.ac.uk" class="text-slate-custom hover:text-oasis-500 transition-colors" aria-label="Email">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Join the Team -->
+      <div class="max-w-2xl mx-auto mt-10 text-center">
+        <h3 class="text-xl font-bold text-charcoal mb-3">Join the Team</h3>
+        <p class="text-sm text-slate-custom mb-6">Interested in contributing or collaborating? Get involved.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://github.com/oasis-surveys/oasis"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-charcoal hover:bg-charcoal/90 text-white font-semibold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            Contribute on GitHub
+          </a>
+          <a
+            href="mailto:max.lang@stx.ox.ac.uk"
+            class="inline-flex items-center gap-2 bg-oasis-500 hover:bg-oasis-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-oasis-500/20 hover:shadow-oasis-500/30 hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Related Work ──────────────────────────────────────── -->
+  <section class="py-20 bg-off-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Research</p>
+        <h2 class="text-3xl font-bold text-charcoal">Related Publications &amp; Talks</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl border border-oasis-100/40 p-5 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-semibold bg-oasis-100 text-oasis-600 px-2 py-0.5 rounded-full">2025</span>
+            <span class="text-xs text-slate-custom">AAPOR · Accepted</span>
+          </div>
+          <h3 class="font-semibold text-charcoal text-sm leading-snug">
+            Telephone Surveys Meet Conversational AI: Evaluating a LLM-Based Telephone Survey System at Scale
+          </h3>
+          <p class="text-xs text-slate-custom mt-1">Lang, M. M., Eskenazi, S.</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-oasis-100/40 p-5 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-semibold bg-oasis-100 text-oasis-600 px-2 py-0.5 rounded-full">2025</span>
+            <span class="text-xs text-slate-custom">AAPOR &amp; NAACL · Accepted</span>
+          </div>
+          <h3 class="font-semibold text-charcoal text-sm leading-snug">
+            AI Conversational Interviewing: Transforming Surveys with LLMs as Adaptive Interviewers
+          </h3>
+          <p class="text-xs text-slate-custom mt-1">Wuttke, A., Aßenmacher, M., Klamm, C., Lang, M. M., et al.</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-oasis-100/40 p-5 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-semibold bg-sand-300 text-sand-700 px-2 py-0.5 rounded-full">2025</span>
+            <span class="text-xs text-slate-custom">Talk · 60 Decibels / ID Insight</span>
+          </div>
+          <h3 class="font-semibold text-charcoal text-sm leading-snug">
+            Using AI Phone Agents to Conduct Impact Research on a Large Scale
+          </h3>
+          <p class="text-xs text-slate-custom mt-1">Invited presentation</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-oasis-100/40 p-5 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-semibold bg-sand-300 text-sand-700 px-2 py-0.5 rounded-full">2024</span>
+            <span class="text-xs text-slate-custom">Talk · University of Zurich</span>
+          </div>
+          <h3 class="font-semibold text-charcoal text-sm leading-snug">
+            Transforming Surveys with AI Conversational Interviewing
+          </h3>
+          <p class="text-xs text-slate-custom mt-1">Digital Society Initiative</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-oasis-100/40 p-5 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-semibold bg-sand-300 text-sand-700 px-2 py-0.5 rounded-full">2023</span>
+            <span class="text-xs text-slate-custom">Talk · OxAI Conference, Oxford</span>
+          </div>
+          <h3 class="font-semibold text-charcoal text-sm leading-snug">
+            Goodbye, Endless Feedback Forms. Hello, SurveyGPT!
+          </h3>
+          <p class="text-xs text-slate-custom mt-1">Early concept that evolved into OASIS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────── -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-charcoal mb-3">Interested in OASIS?</h2>
+      <p class="text-slate-custom mb-6">
+        Whether you want to use it for your research, contribute to the codebase, or just chat about
+        conversational AI for surveys, I'd love to hear from you.
+      </p>
+      <a
+        href="mailto:max.lang@stx.ox.ac.uk"
+        class="inline-flex items-center gap-2 bg-oasis-500 hover:bg-oasis-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-oasis-500/20 hover:shadow-oasis-500/30 hover:-translate-y-0.5"
+      >
+        Reach Out
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</Base>
