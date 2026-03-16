@@ -681,6 +681,99 @@ import Base from '../layouts/Base.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════
+       FAIR PRINCIPLES
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-4">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Design Philosophy</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Built on FAIR Principles</h2>
+        <p class="mt-4 text-slate-custom max-w-2xl mx-auto">
+          From day one, OASIS has been designed around the
+          <a href="https://www.go-fair.org/fair-principles/" target="_blank" rel="noopener noreferrer" class="text-oasis-500 hover:underline font-medium">FAIR</a>
+          framework — making research infrastructure Findable, Accessible, Interoperable, and Reusable.
+        </p>
+      </div>
+
+      <!-- FAIR Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12 fair-grid">
+
+        <!-- F -->
+        <div class="fair-card group relative bg-gradient-to-b from-oasis-50/80 to-white rounded-2xl border border-oasis-200/50 p-6 hover:shadow-lg hover:border-oasis-300/60 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-oasis-500 text-white flex items-center justify-center text-xl font-extrabold mb-4 group-hover:scale-110 transition-transform">F</div>
+          <h3 class="font-bold text-charcoal mb-1.5">Findable</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Open repository, public documentation, persistent identifiers. Every study, agent, and transcript is structured and searchable.
+          </p>
+        </div>
+
+        <!-- A -->
+        <div class="fair-card group relative bg-gradient-to-b from-oasis-50/80 to-white rounded-2xl border border-oasis-200/50 p-6 hover:shadow-lg hover:border-oasis-300/60 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-oasis-500 text-white flex items-center justify-center text-xl font-extrabold mb-4 group-hover:scale-110 transition-transform">A</div>
+          <h3 class="font-bold text-charcoal mb-1.5">Accessible</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Free to deploy, no vendor accounts required. Standard protocols (HTTP, WebSocket) and open APIs — no proprietary gateways.
+          </p>
+        </div>
+
+        <!-- I -->
+        <div class="fair-card group relative bg-gradient-to-b from-oasis-50/80 to-white rounded-2xl border border-oasis-200/50 p-6 hover:shadow-lg hover:border-oasis-300/60 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-oasis-500 text-white flex items-center justify-center text-xl font-extrabold mb-4 group-hover:scale-110 transition-transform">I</div>
+          <h3 class="font-bold text-charcoal mb-1.5">Interoperable</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Swap LLM providers with one config change. Export data as JSON or CSV. Embed interviews in Qualtrics, LimeSurvey, or any iframe host.
+          </p>
+        </div>
+
+        <!-- R -->
+        <div class="fair-card group relative bg-gradient-to-b from-oasis-50/80 to-white rounded-2xl border border-oasis-200/50 p-6 hover:shadow-lg hover:border-oasis-300/60 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-oasis-500 text-white flex items-center justify-center text-xl font-extrabold mb-4 group-hover:scale-110 transition-transform">R</div>
+          <h3 class="font-bold text-charcoal mb-1.5">Reusable</h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Open-source codebase, clear license, Docker-based deployment. Fork it, extend it, run it for your own studies — it's yours.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .fair-card {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .fair-card.visible {
+      animation: fair-rise 0.5s ease forwards;
+    }
+    .fair-card:nth-child(2).visible { animation-delay: 100ms; }
+    .fair-card:nth-child(3).visible { animation-delay: 200ms; }
+    .fair-card:nth-child(4).visible { animation-delay: 300ms; }
+
+    @keyframes fair-rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <script>
+    // Animate FAIR cards on scroll
+    const fairCards = document.querySelectorAll('.fair-card');
+    const fairObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fairCards.forEach(card => fairObserver.observe(card));
+  </script>
+
+
+  <!-- ════════════════════════════════════════════════════════════
        HOW IT WORKS
        ════════════════════════════════════════════════════════════ -->
   <section id="how-it-works" class="py-24 bg-white">
