@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  activeNav="pilot"
+  title="Pilot Program | OASIS"
+  description="Join the OASIS early adopter program. Get hands-on support, shape the roadmap, and deploy AI-powered interviews for your research group."
+  keywords="OASIS, pilot program, early adopter, AI interviews, research collaboration, open source"
+>
+
+  <!-- ════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-oasis-50 via-off-white to-sand-100 -z-10"></div>
+    <div class="absolute top-20 -left-32 w-96 h-96 bg-oasis-200/30 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-10 right-0 w-80 h-80 bg-sand-300/20 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-oasis-100/60 text-oasis-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 animate-fade-in">
+        <span class="w-2 h-2 bg-oasis-400 rounded-full animate-pulse"></span>
+        Now Open · Limited Spots
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-charcoal animate-fade-in-up">
+        Pilot Program for<br/>
+        <span class="text-oasis-500">Research Groups</span>
+      </h1>
+
+      <p class="mt-6 text-lg md:text-xl text-slate-custom max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 150ms;">
+        OASIS is new. We're looking for research teams who want to be among the first to
+        deploy AI-powered interviews and who want a direct line to the developer while doing it.
+      </p>
+
+      <!-- Early CTA -->
+      <div class="mt-10 animate-fade-in-up" style="animation-delay: 300ms;">
+        <a
+          href="mailto:max.lang@stx.ox.ac.uk?subject=OASIS%20Pilot%20Program&body=Hi%20Max%2C%0A%0AI'm%20interested%20in%20the%20OASIS%20pilot%20program.%0A%0AOur%20research%20group%3A%20%0AUse%20case%3A%20%0AInfrastructure%20(cloud%2FVM%2Flocal)%3A%20%0A%0ABest%2C"
+          class="inline-flex items-center gap-2 bg-oasis-500 hover:bg-oasis-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-oasis-500/20 hover:shadow-oasis-500/30 hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Get in Touch
+        </a>
+        <p class="mt-3 text-sm text-slate-custom">No forms. Just send an email.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       WHAT YOU GET / WHAT WE GET
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        <!-- What you get -->
+        <div class="bg-gradient-to-b from-oasis-50/80 to-white rounded-2xl border border-oasis-200/50 p-8">
+          <div class="w-12 h-12 rounded-xl bg-oasis-500 text-white flex items-center justify-center mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-charcoal mb-4">What You Get</h2>
+          <ul class="space-y-3 text-sm text-slate-custom leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-oasis-500 mt-0.5 flex-shrink-0">✓</span>
+              <span><strong class="text-charcoal">Hands-on setup support.</strong> We help you deploy OASIS on your infrastructure (VM, cloud, or local).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-oasis-500 mt-0.5 flex-shrink-0">✓</span>
+              <span><strong class="text-charcoal">Direct access.</strong> A private channel to the developer for questions, bug reports, and feature requests.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-oasis-500 mt-0.5 flex-shrink-0">✓</span>
+              <span><strong class="text-charcoal">Priority bug fixes.</strong> Issues you encounter get fast-tracked.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-oasis-500 mt-0.5 flex-shrink-0">✓</span>
+              <span><strong class="text-charcoal">Roadmap input.</strong> Help shape which features get built next based on your real research needs.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-oasis-500 mt-0.5 flex-shrink-0">✓</span>
+              <span><strong class="text-charcoal">Co-authorship opportunities.</strong> If your use of OASIS leads to methodological insights, let's write about it together.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- What we get -->
+        <div class="bg-gradient-to-b from-sand-100/80 to-white rounded-2xl border border-sand-300/50 p-8">
+          <div class="w-12 h-12 rounded-xl bg-sand-500 text-white flex items-center justify-center mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-charcoal mb-4">What We Learn</h2>
+          <ul class="space-y-3 text-sm text-slate-custom leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-sand-500 mt-0.5 flex-shrink-0">→</span>
+              <span><strong class="text-charcoal">Real-world feedback.</strong> How OASIS performs outside the developer's own test environments.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-sand-500 mt-0.5 flex-shrink-0">→</span>
+              <span><strong class="text-charcoal">Edge cases.</strong> Unusual OS configurations, network setups, and institutional constraints we haven't seen yet.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-sand-500 mt-0.5 flex-shrink-0">→</span>
+              <span><strong class="text-charcoal">Use-case diversity.</strong> Understanding how different disciplines use conversational AI for data collection.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-sand-500 mt-0.5 flex-shrink-0">→</span>
+              <span><strong class="text-charcoal">Community seeds.</strong> Early adopters become the core of a future open-source community.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       WHO IS THIS FOR
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-off-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Good Fit</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-charcoal">Who Is This For?</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 flex items-start gap-3">
+          <span class="text-lg mt-0.5">🎓</span>
+          <div>
+            <h3 class="font-semibold text-charcoal text-sm mb-1">Academic Research Groups</h3>
+            <p class="text-xs text-slate-custom leading-relaxed">Running qualitative or mixed-methods studies and interested in AI-assisted interviewing.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 flex items-start gap-3">
+          <span class="text-lg mt-0.5">🏛️</span>
+          <div>
+            <h3 class="font-semibold text-charcoal text-sm mb-1">Institutions & Survey Labs</h3>
+            <p class="text-xs text-slate-custom leading-relaxed">Organisations with their own server infrastructure looking for a self-hosted survey tool.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 flex items-start gap-3">
+          <span class="text-lg mt-0.5">🔬</span>
+          <div>
+            <h3 class="font-semibold text-charcoal text-sm mb-1">Methods Researchers</h3>
+            <p class="text-xs text-slate-custom leading-relaxed">Studying conversational AI itself, including interviewer behaviour, probe quality, or bias detection.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-5 flex items-start gap-3">
+          <span class="text-lg mt-0.5">🌍</span>
+          <div>
+            <h3 class="font-semibold text-charcoal text-sm mb-1">NGOs & Public Sector</h3>
+            <p class="text-xs text-slate-custom leading-relaxed">Non-commercial organisations that need data sovereignty and can't use third-party survey platforms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       HOW IT WORKS
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Process</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-charcoal">How It Works</h2>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Step 1 -->
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full bg-oasis-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
+          <div>
+            <h3 class="font-semibold text-charcoal mb-1">Reach Out</h3>
+            <p class="text-sm text-slate-custom leading-relaxed">
+              Send a short email describing your research context, your team, and what you'd like to use OASIS for. No formal application, just a conversation starter.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full bg-oasis-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
+          <div>
+            <h3 class="font-semibold text-charcoal mb-1">Quick Call</h3>
+            <p class="text-sm text-slate-custom leading-relaxed">
+              We'll have a brief call to understand your setup (infrastructure, research design, timeline) and check if OASIS is a good fit right now.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full bg-oasis-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</div>
+          <div>
+            <h3 class="font-semibold text-charcoal mb-1">Deploy Together</h3>
+            <p class="text-sm text-slate-custom leading-relaxed">
+              We help you get OASIS running on your infrastructure. You start collecting data. We stay in the loop for support and feedback.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       HONEST NOTE
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-16 bg-off-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="bg-white rounded-2xl border border-oasis-100/60 p-8">
+        <h3 class="font-bold text-charcoal mb-3 flex items-center gap-2">
+          <svg class="w-5 h-5 text-oasis-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+          </svg>
+          An honest note
+        </h3>
+        <p class="text-sm text-slate-custom leading-relaxed mb-3">
+          This is not a polished enterprise onboarding. OASIS is a young, actively developed project built by a solo researcher.
+          Things may break, documentation may have gaps, and some features are still in progress.
+        </p>
+        <p class="text-sm text-slate-custom leading-relaxed">
+          The pilot program exists precisely because of this: to find issues faster, to learn what researchers actually need,
+          and to build something genuinely useful together. If that sounds like your kind of collaboration, we'd love to hear from you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CTA
+       ════════════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-gradient-to-r from-oasis-600 via-oasis-500 to-oasis-400 text-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Interested?</h2>
+      <p class="text-oasis-100 mb-8 text-lg max-w-xl mx-auto">
+        Drop a short email about your research group and what you'd like to explore with OASIS. No commitment, no forms.
+      </p>
+      <a
+        href="mailto:max.lang@stx.ox.ac.uk?subject=OASIS%20Pilot%20Program&body=Hi%20Max%2C%0A%0AI'm%20interested%20in%20the%20OASIS%20pilot%20program.%0A%0AOur%20research%20group%3A%20%0AUse%20case%3A%20%0AInfrastructure%20(cloud%2FVM%2Flocal)%3A%20%0A%0ABest%2C"
+        class="inline-flex items-center gap-2 bg-white text-oasis-600 font-semibold px-8 py-4 rounded-xl transition-all hover:bg-oasis-50 hover:-translate-y-0.5 shadow-lg text-lg"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        Get in Touch
+      </a>
+      <p class="mt-4 text-oasis-200 text-sm">max.lang@stx.ox.ac.uk</p>
+    </div>
+  </section>
+
+</Base>
