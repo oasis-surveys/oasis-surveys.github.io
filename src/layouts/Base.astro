@@ -5,13 +5,18 @@ interface Props {
   title?: string;
   description?: string;
   activeNav?: string;
+  keywords?: string;
 }
 
 const {
   title = 'OASIS | Open Agentic Survey Interview System',
   description = 'Self-hosted, open-source platform for AI-powered conversational interviews. Voice agents, text chat, structured protocols. Full control over your research infrastructure.',
   activeNav = 'home',
+  keywords = 'OASIS, AI surveys, conversational interviews, open-source, self-hosted, voice agents, research infrastructure, LLM, survey platform',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/oasis-logo.png', Astro.site);
 ---
 
 <!doctype html>
@@ -21,12 +26,26 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="author" content="Max M. Lang" />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL.href} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/oasis-logo.png" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:image:alt" content="OASIS — Open Agentic Survey Interview System" />
+    <meta property="og:site_name" content="OASIS" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/oasis-logo.png" />
@@ -38,6 +57,34 @@ const {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OASIS",
+      "alternateName": "Open Agentic Survey Interview System",
+      "description": "Self-hosted, open-source platform for AI-powered conversational interviews. Voice agents, text chat, structured protocols.",
+      "url": "https://oasis-surveys.github.io",
+      "applicationCategory": "ResearchApplication",
+      "operatingSystem": "Linux, macOS, Windows (via Docker)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Max M. Lang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "University of Oxford"
+        }
+      },
+      "codeRepository": "https://github.com/oasis-surveys/oasis-platform",
+      "license": "https://oasis-surveys.github.io/license",
+      "isAccessibleForFree": true
+    })} />
 
     <title>{title}</title>
   </head>
