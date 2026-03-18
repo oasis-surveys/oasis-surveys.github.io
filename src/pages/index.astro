@@ -1069,59 +1069,16 @@ import Base from '../layouts/Base.astro';
           </li>
         </ul>
 
-        <!-- Expandable detail -->
-        <details class="group">
-          <summary class="cursor-pointer text-sm font-medium text-oasis-500 hover:text-oasis-600 transition-colors flex items-center gap-1.5">
-            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-            Read the full license terms
-          </summary>
-          <div class="mt-4 pt-4 border-t border-oasis-100/60 text-sm text-slate-custom leading-relaxed space-y-3">
-            <p>
-              <strong class="text-charcoal">OASIS Non-Commercial Research License (ONCRL) v1.0</strong>
-            </p>
-            <p>
-              Copyright &copy; 2025–{new Date().getFullYear()} Max M. Lang. All rights reserved.
-            </p>
-            <p>
-              Permission is hereby granted, free of charge, to any person or institution obtaining a copy of this software
-              and associated documentation files (the "Software"), to use, copy, modify, and distribute the Software for
-              <strong class="text-charcoal">non-commercial academic and research purposes only</strong>, subject to the following conditions:
-            </p>
-            <ol class="list-decimal ml-5 space-y-2">
-              <li>
-                <strong class="text-charcoal">Non-Commercial Use.</strong> The Software shall not be used, in whole or in part,
-                for any commercial purpose. This includes but is not limited to: selling, licensing, or offering the Software
-                as a paid service; incorporating the Software into a commercial product; or using the Software to generate revenue.
-              </li>
-              <li>
-                <strong class="text-charcoal">Funding &amp; Grants.</strong> If the Software or a derivative thereof forms a
-                substantial component of a funding application, grant proposal, or similar undertaking, the applicant must
-                obtain prior written approval from the copyright holder.
-              </li>
-              <li>
-                <strong class="text-charcoal">Attribution.</strong> All copies or substantial portions of the Software must
-                include this copyright notice and permission notice. Any published work making use of the Software must cite
-                the OASIS project and its author.
-              </li>
-              <li>
-                <strong class="text-charcoal">Contributions.</strong> Contributions to the project are encouraged and welcome.
-                By submitting a contribution, you agree that your contribution is licensed under the same terms as this license.
-              </li>
-              <li>
-                <strong class="text-charcoal">No Warranty.</strong> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-                EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
-                AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM
-                THE SOFTWARE.
-              </li>
-            </ol>
-            <p>
-              For commercial licensing inquiries, collaborations, or questions, contact:
-              <a href="mailto:max.lang@stx.ox.ac.uk" class="text-oasis-500 hover:underline">max.lang@stx.ox.ac.uk</a>
-            </p>
-          </div>
-        </details>
+        <!-- Link to full license page -->
+        <a
+          href="/licensing"
+          class="inline-flex items-center gap-1.5 text-sm font-medium text-oasis-500 hover:text-oasis-600 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          Read the full license terms &amp; grant clarifications
+        </a>
       </div>
     </div>
   </section>
