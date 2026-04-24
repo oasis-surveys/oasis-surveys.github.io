@@ -4,138 +4,147 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="License | OASIS"
-  description="OASIS Non-Commercial Research License. Terms of use for the OASIS platform."
+  description="OASIS is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0)."
   activeNav=""
 >
-  <section class="py-24 bg-off-white">
-    <div class="max-w-3xl mx-auto px-6">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-charcoal mb-8">License</h1>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-oasis-50 via-off-white to-sand-100 -z-10"></div>
+    <div class="max-w-4xl mx-auto px-6 py-24 md:py-28">
+      <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-3 animate-fade-in">Open Source</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-charcoal leading-tight animate-fade-in-up">
+        License
+      </h1>
+      <p class="mt-4 text-lg text-slate-custom max-w-2xl animate-fade-in-up">
+        OASIS is free and open-source software released under the
+        <strong class="text-charcoal">GNU Affero General Public License v3.0</strong>.
+      </p>
+    </div>
+  </section>
 
-      <div class="bg-white rounded-2xl border border-oasis-100/60 p-8 text-sm text-slate-custom leading-relaxed space-y-5">
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-6 space-y-10">
+
+      <!-- AGPL-3.0 Summary -->
+      <div class="bg-off-white rounded-2xl border border-oasis-100/60 p-8 text-sm text-slate-custom leading-relaxed space-y-5">
         <p>
-          <strong class="text-charcoal text-base">OASIS Non-Commercial Research License (ONCRL) v1.0</strong>
+          <strong class="text-charcoal text-base">GNU Affero General Public License v3.0 (AGPL-3.0)</strong>
         </p>
         <p>
-          Copyright &copy; 2025–{new Date().getFullYear()} Max M. Lang. All rights reserved.
+          Copyright &copy; 2025–{new Date().getFullYear()} Max M. Lang and contributors.
         </p>
         <p>
-          Permission is hereby granted, free of charge, to any person or institution obtaining a copy of this software
-          and associated documentation files (the "Software"), to use, copy, modify, and distribute the Software for
-          <strong class="text-charcoal">non-commercial academic and research purposes only</strong>, subject to the
-          following conditions:
-        </p>
-
-        <ol class="list-decimal ml-5 space-y-4">
-          <li>
-            <strong class="text-charcoal">Non-Commercial Use.</strong> The Software shall not be used, in whole or in part,
-            for any commercial purpose. This includes but is not limited to: selling, licensing, or offering the Software
-            as a paid service; incorporating the Software into a commercial product; or using the Software to generate revenue.
-          </li>
-          <li>
-            <strong class="text-charcoal">Funding &amp; Grants.</strong> If the Software or a derivative thereof forms a
-            substantial component of a funding application, grant proposal, or similar undertaking, the applicant must
-            obtain prior written approval from the copyright holder.
-          </li>
-          <li>
-            <strong class="text-charcoal">Attribution.</strong> All copies or substantial portions of the Software must
-            include this copyright notice and permission notice. Any published work making use of the Software must cite
-            the OASIS project and its author.
-          </li>
-          <li>
-            <strong class="text-charcoal">Contributions.</strong> Contributions to the project are encouraged and welcome.
-            By submitting a contribution, you agree that your contribution is licensed under the same terms as this license.
-          </li>
-          <li>
-            <strong class="text-charcoal">No Warranty.</strong> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-            EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
-            AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY,
-            WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE
-            OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-          </li>
-        </ol>
-
-        <hr class="border-oasis-100/60" />
-
-        <p>
-          For commercial licensing inquiries, collaborations, or questions about permitted use, please contact:
+          The AGPL-3.0 is a strong copyleft license that guarantees users the freedom to use, study,
+          modify, and distribute the software — with one important addition over the standard GPL: if you
+          modify OASIS and offer it as a network service (e.g.&nbsp;a hosted SaaS product), you must make
+          your modified source code available to all users of that service.
         </p>
         <p>
-          <a href="mailto:max.lang@stx.ox.ac.uk" class="text-oasis-500 hover:underline font-medium">max.lang@stx.ox.ac.uk</a>
+          The full legal text of the license is available at
+          <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer" class="text-oasis-500 hover:underline font-medium">gnu.org/licenses/agpl-3.0</a>
+          and in the
+          <a href="https://github.com/oasis-surveys/oasis-platform/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="text-oasis-500 hover:underline font-medium">LICENSE</a>
+          file in the repository.
         </p>
       </div>
 
-      <!-- Grant Clarification -->
-      <div class="mt-10 bg-white rounded-2xl border border-oasis-100/60 p-8 text-sm text-slate-custom leading-relaxed space-y-5">
-        <h2 class="text-xl font-bold text-charcoal">Clarification: Use in Funded Projects</h2>
-
-        <p>
-          There is an important distinction between <strong class="text-charcoal">using OASIS within a funded project</strong>
-          and <strong class="text-charcoal">building a new grant proposal around OASIS</strong>.
-        </p>
+      <!-- What This Means in Practice -->
+      <div class="space-y-6">
+        <h2 class="text-xl font-bold text-charcoal">What This Means in Practice</h2>
 
         <div class="bg-oasis-50/50 border border-oasis-100/60 rounded-xl p-6 space-y-3">
           <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
             <span class="text-oasis-500">✓</span>
-            Using OASIS in an existing or approved project
+            Academic &amp; research use
           </h3>
-          <p>
-            If you have an approved grant and want to use OASIS as part of your data collection or research
-            infrastructure, you are welcome to do so. This is what the platform is built for. All we ask is that you:
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Use OASIS freely in your research — whether self-funded, grant-funded, or
+            institutionally supported. Run studies, collect data, publish results. No special
+            permission needed; just cite the project in your publications.
           </p>
-          <ol class="list-decimal ml-5 space-y-1.5">
-            <li>Cite OASIS properly in any publications or outputs</li>
-            <li>Let the Project Lead know so we can track adoption and offer support where needed</li>
-            <li>Discuss a brief collaboration agreement if OASIS plays a substantial role in the project. This is
-              typically lightweight and covers attribution, contribution of improvements, and optionally a service
-              or collaboration arrangement</li>
-          </ol>
-          <p class="text-xs text-slate-custom/70">
-            Reaching out is encouraged but does not need to be a barrier to getting started.
+        </div>
+
+        <div class="bg-oasis-50/50 border border-oasis-100/60 rounded-xl p-6 space-y-3">
+          <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
+            <span class="text-oasis-500">✓</span>
+            Modify &amp; extend
+          </h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Fork the code, add features, fix bugs, adapt it to your workflow. If you distribute
+            your changes or offer them over a network, share the source under the same AGPL-3.0 terms.
+          </p>
+        </div>
+
+        <div class="bg-oasis-50/50 border border-oasis-100/60 rounded-xl p-6 space-y-3">
+          <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
+            <span class="text-oasis-500">✓</span>
+            Self-host for your organisation
+          </h3>
+          <p class="text-sm text-slate-custom leading-relaxed">
+            Deploy OASIS on your own servers for internal use — universities, research institutes,
+            NGOs, or companies — without any obligation to publish your modifications, as long as
+            you are not offering the service to third parties.
           </p>
         </div>
 
         <div class="bg-amber-50/60 border border-amber-200/60 rounded-xl p-6 space-y-3">
           <h3 class="text-base font-semibold text-charcoal flex items-center gap-2">
             <span class="text-amber-500">⚠</span>
-            Writing new grant proposals that build on OASIS
+            Network-service requirement
           </h3>
-          <p>
-            If you are writing a <strong class="text-charcoal">new</strong> funding application or grant proposal
-            in which OASIS (or a derivative) is a substantial component, for example proposing to build a data
-            collection infrastructure based on OASIS, or presenting the platform's capabilities as part of your
-            project design, you must obtain written approval from the Project Lead <strong class="text-charcoal">before</strong>
-            submitting the proposal.
+          <p class="text-sm text-slate-custom leading-relaxed">
+            If you modify OASIS and make it available over a network (e.g.&nbsp;as a commercial
+            SaaS offering), you must provide the complete corresponding source code to all users
+            of that service under the AGPL-3.0. This is the key mechanism that prevents commercial
+            free-riding while keeping the ecosystem open.
           </p>
-          <p>
-            <strong class="text-charcoal">Why does this rule exist?</strong> OASIS was designed, built, and maintained by its
-            author as part of independent research. It is not reasonable for another group to present this work as their own
-            creation in a funding application, or to build a proposal around the platform without involving or crediting the
-            people who made it. This policy protects against academic misappropriation while keeping the door wide open for
-            genuine collaboration.
-          </p>
-          <p>
-            In practice, this is a conversation, not a bureaucratic process. The Project Lead is actively interested in
-            collaborations and has approved every good-faith request to date. Typical arrangements include co-authorship
-            on methodological outputs, a personnel share or service contract for platform development, or simply a formal
-            acknowledgement and contribution agreement.
-          </p>
-        </div>
-
-        <div class="bg-oasis-50/30 border border-oasis-100/40 rounded-lg p-4 text-center">
-          <p class="text-charcoal font-medium">
-            If in doubt, reach out early — ideally before you start writing the proposal.
-          </p>
-          <a
-            href="mailto:max.lang@stx.ox.ac.uk"
-            class="inline-flex items-center gap-1.5 mt-2 text-oasis-500 hover:text-oasis-600 font-medium transition-colors"
-          >
-            max.lang@stx.ox.ac.uk
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </a>
         </div>
       </div>
+
+      <!-- Why AGPL -->
+      <div>
+        <h2 class="text-xl font-bold text-charcoal mb-4">Why AGPL-3.0?</h2>
+        <p class="text-sm text-slate-custom leading-relaxed">
+          OASIS was previously released under the OASIS Non-Commercial Research License (ONCRL).
+          We moved to the AGPL-3.0 because it is a well-understood, OSI-approved license that
+          removes friction for academic users — no grant-clause ambiguity, no need to ask
+          permission — while still protecting the project against commercial SaaS exploitation
+          through the network-service copyleft provision.
+        </p>
+      </div>
+
+      <!-- Citation -->
+      <div class="bg-off-white rounded-2xl border border-oasis-100/60 p-8 text-sm text-slate-custom leading-relaxed space-y-4">
+        <h2 class="text-xl font-bold text-charcoal">Citation</h2>
+        <p>
+          Citation is appreciated but <strong class="text-charcoal">not legally required</strong>
+          by the AGPL-3.0. If you use OASIS in published work, we would be grateful if you cited
+          the project. BibTeX and DOI details are available in the
+          <a href="https://github.com/oasis-surveys/oasis-platform#citation" target="_blank" rel="noopener noreferrer" class="text-oasis-500 hover:underline font-medium">repository README</a>.
+        </p>
+      </div>
+
+      <!-- FAQ Link -->
+      <div class="bg-oasis-50/30 border border-oasis-100/40 rounded-lg p-6 text-center space-y-3">
+        <p class="text-charcoal font-medium">
+          Have questions about what's permitted?
+        </p>
+        <a
+          href="https://github.com/oasis-surveys/oasis-platform/blob/main/FAQ.md#whats-the-deal-with-the-license"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-oasis-500 text-white text-sm font-semibold rounded-lg hover:bg-oasis-600 transition-colors"
+        >
+          Read the Licensing FAQ
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
+        </a>
+        <p class="text-xs text-slate-custom/70">
+          Or reach out at
+          <a href="mailto:max.lang@stx.ox.ac.uk" class="text-oasis-500 hover:underline">max.lang@stx.ox.ac.uk</a>
+        </p>
+      </div>
+
     </div>
   </section>
 </Base>

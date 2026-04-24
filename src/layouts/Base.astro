@@ -82,7 +82,7 @@ const ogImageURL = new URL('/oasis-logo.png', Astro.site);
         }
       },
       "codeRepository": "https://github.com/oasis-surveys/oasis-platform",
-      "license": "https://oasis-surveys.github.io/license",
+      "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "isAccessibleForFree": true
     })} />
 
@@ -136,6 +136,20 @@ const ogImageURL = new URL('/oasis-logo.png', Astro.site);
             </span>
           </a>
           <a
+            href="https://github.com/oasis-surveys/oasis-platform/blob/main/FAQ.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              'inline-flex items-center gap-1.5 transition-colors hover:text-oasis-500',
+              activeNav === 'faq' ? 'text-oasis-500' : 'text-slate-custom',
+            ]}
+          >
+            FAQ
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </a>
+          <a
             href="https://github.com/oasis-surveys"
             target="_blank"
             rel="noopener noreferrer"
@@ -173,6 +187,7 @@ const ogImageURL = new URL('/oasis-logo.png', Astro.site);
               <span class="relative inline-flex rounded-full h-2 w-2 bg-oasis-500"></span>
             </span>
           </a>
+          <a href="https://github.com/oasis-surveys/oasis-platform/blob/main/FAQ.md" target="_blank" rel="noopener noreferrer" class="block text-slate-custom hover:text-oasis-500 transition-colors">FAQ ↗</a>
           <a href="https://github.com/oasis-surveys" target="_blank" rel="noopener noreferrer" class="block text-slate-custom hover:text-oasis-500 transition-colors">GitHub ↗</a>
         </div>
       </div>
@@ -207,6 +222,7 @@ const ogImageURL = new URL('/oasis-logo.png', Astro.site);
               <li><a href="/docs" class="hover:text-oasis-300 transition-colors">Documentation</a></li>
               <li><a href="/about" class="hover:text-oasis-300 transition-colors">About</a></li>
               <li><a href="/pilot" class="hover:text-oasis-300 transition-colors">Pilot Program</a></li>
+              <li><a href="https://github.com/oasis-surveys/oasis-platform/blob/main/FAQ.md" target="_blank" rel="noopener noreferrer" class="hover:text-oasis-300 transition-colors">FAQ ↗</a></li>
               <li><a href="https://github.com/oasis-surveys/oasis-platform" target="_blank" rel="noopener noreferrer" class="hover:text-oasis-300 transition-colors">GitHub ↗</a></li>
             </ul>
           </div>
