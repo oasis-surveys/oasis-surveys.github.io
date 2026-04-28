@@ -1,6 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 
+const codeQuickEnv = `<span class="text-white/40"># In .env — just these two lines to start:</span>
+OPENAI_API_KEY=<span class="text-sand-400">sk-...</span>
+SECRET_KEY=<span class="text-sand-400">some-random-secret</span>`;
+
+const codeQuickStart = `<span class="text-oasis-300">$</span> git clone https://github.com/oasis-surveys/oasis-platform.git
+<span class="text-oasis-300">$</span> cd oasis-platform
+<span class="text-oasis-300">$</span> cp .env.example .env
+<span class="text-oasis-300">$</span> <span class="text-white/40"># edit .env → set OPENAI_API_KEY and SECRET_KEY</span>
+<span class="text-oasis-300">$</span> docker compose up -d`;
+
 const codeInstall = `<span class="text-oasis-300">$</span> git clone https://github.com/oasis-surveys/oasis-platform.git
 <span class="text-oasis-300">$</span> cd oasis-platform
 <span class="text-oasis-300">$</span> cp .env.example .env`;
@@ -22,9 +32,23 @@ DEEPGRAM_API_KEY=<span class="text-sand-400">...</span>
 ELEVENLABS_API_KEY=<span class="text-sand-400">...</span>
 
 <span class="text-white/40"># ── Optional Providers ──</span>
-GOOGLE_API_KEY=<span class="text-sand-400">...</span>            <span class="text-white/40"># For Gemini Live</span>
-SCALEWAY_SECRET_KEY=<span class="text-sand-400">...</span>      <span class="text-white/40"># For Scaleway LLMs</span>
-ANTHROPIC_API_KEY=<span class="text-sand-400">...</span>        <span class="text-white/40"># For Claude</span>
+GOOGLE_API_KEY=<span class="text-sand-400">...</span>            <span class="text-white/40"># Gemini Live</span>
+SCALEWAY_SECRET_KEY=<span class="text-sand-400">...</span>      <span class="text-white/40"># Scaleway LLMs</span>
+ANTHROPIC_API_KEY=<span class="text-sand-400">...</span>        <span class="text-white/40"># Claude</span>
+
+<span class="text-white/40"># ── EU Data Residency (Optional) ──</span>
+OPENAI_USE_EU=false           <span class="text-white/40"># Route OpenAI calls via eu.api.openai.com</span>
+
+<span class="text-white/40"># ── Custom OpenAI-Compatible LLM (Optional) ──</span>
+OPENAI_COMPATIBLE_LLM_URL=<span class="text-sand-400">...</span>      <span class="text-white/40"># e.g. LiteLLM proxy, vLLM, Ollama</span>
+OPENAI_COMPATIBLE_LLM_API_KEY=<span class="text-sand-400">...</span>
+
+<span class="text-white/40"># ── Self-Hosted STT/TTS (Optional) ──</span>
+SELF_HOSTED_STT_URL=<span class="text-sand-400">...</span>      <span class="text-white/40"># OpenAI-compatible STT server</span>
+SELF_HOSTED_TTS_URL=<span class="text-sand-400">...</span>      <span class="text-white/40"># OpenAI-compatible TTS server</span>
+
+<span class="text-white/40"># ── Embeddings (Optional) ──</span>
+EMBEDDING_API_URL=<span class="text-sand-400">...</span>        <span class="text-white/40"># Self-hosted embedding server</span>
 
 <span class="text-white/40"># ── Telephony (Optional) ──</span>
 TWILIO_ACCOUNT_SID=<span class="text-sand-400">...</span>
@@ -89,24 +113,73 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
         <aside class="lg:w-56 flex-shrink-0">
           <nav class="lg:sticky lg:top-24 space-y-1 text-sm">
             <p class="font-semibold text-charcoal text-xs uppercase tracking-wider mb-3">On This Page</p>
+
+            <a href="#quick-start" class="block text-oasis-500 font-medium transition-colors py-1">Quick Start</a>
+
+            <p class="font-semibold text-charcoal/50 text-[10px] uppercase tracking-wider mt-4 mb-1 pt-3 border-t border-oasis-100/60">Setup</p>
             <a href="#prerequisites" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Prerequisites</a>
-            <a href="#responsible-use" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1 pl-3 text-xs border-l border-oasis-200">Responsible Use</a>
             <a href="#installation" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Installation</a>
             <a href="#configuration" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Configuration</a>
+
+            <p class="font-semibold text-charcoal/50 text-[10px] uppercase tracking-wider mt-4 mb-1 pt-3 border-t border-oasis-100/60">Agents & Studies</p>
             <a href="#first-agent" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Your First Agent</a>
+            <a href="#templates" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1 pl-3 text-xs border-l border-oasis-200">Agent Templates</a>
             <a href="#structured" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Structured Interviews</a>
             <a href="#text-agents" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Text Chat Agents</a>
+            <a href="#participants" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Participant Tracking</a>
+
+            <p class="font-semibold text-charcoal/50 text-[10px] uppercase tracking-wider mt-4 mb-1 pt-3 border-t border-oasis-100/60">Infrastructure</p>
             <a href="#models" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Model Selection</a>
+            <a href="#self-hosted-stt-tts" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Self-Hosted STT/TTS</a>
+            <a href="#eu-residency" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">EU Data Residency</a>
             <a href="#deployment" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Deployment Options</a>
             <a href="#auth" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Authentication</a>
             <a href="#telephony" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Telephony (Twilio)</a>
             <a href="#rag" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">Knowledge Base (RAG)</a>
+
+            <p class="font-semibold text-charcoal/50 text-[10px] uppercase tracking-wider mt-4 mb-1 pt-3 border-t border-oasis-100/60">Reference</p>
             <a href="#api-reference" class="block text-slate-custom hover:text-oasis-500 transition-colors py-1">API Reference</a>
           </nav>
         </aside>
 
         <!-- Main content -->
         <div class="flex-1 min-w-0 prose-container">
+
+          <!-- ── Quick Start ───────────────────────────────── -->
+          <div id="quick-start" class="mb-16 scroll-mt-24">
+            <div class="bg-gradient-to-br from-oasis-50 to-oasis-100/40 rounded-2xl border-2 border-oasis-200/60 p-6 md:p-8">
+              <h2 class="text-2xl font-bold text-charcoal mb-2 flex items-center gap-2">
+                <span class="text-oasis-500">#</span> Quick Start
+              </h2>
+              <p class="text-slate-custom text-sm leading-relaxed mb-5">
+                You need <strong class="text-charcoal">Docker</strong> and an
+                <strong class="text-charcoal">OpenAI API key</strong>. That's the minimum for a complete
+                voice or text interview end-to-end. Everything else is optional.
+              </p>
+
+              <div class="space-y-4">
+                <div>
+                  <p class="text-xs font-semibold text-oasis-600 uppercase tracking-wider mb-2">1. Clone and set two env vars</p>
+                  <pre class="!bg-charcoal text-sm !text-white/90 !mb-0"><code set:html={codeQuickStart} /></pre>
+                </div>
+
+                <div>
+                  <p class="text-xs font-semibold text-oasis-600 uppercase tracking-wider mb-2">2. Open the dashboard</p>
+                  <p class="text-slate-custom text-sm leading-relaxed">
+                    Go to <code>http://localhost</code>. Create a study, pick a
+                    <a href="#templates" class="text-oasis-500 hover:underline font-medium">research template</a>,
+                    and you have a working interview agent. Copy the share link and try it out.
+                  </p>
+                </div>
+
+                <div class="bg-white/60 rounded-xl p-4 text-sm text-slate-custom">
+                  With just an OpenAI key you get text chat (GPT-4o-mini), modular voice
+                  (Whisper STT + GPT-4o-mini-tts), and voice-to-voice (OpenAI Realtime). Add other provider
+                  keys later if you need them — see <a href="#configuration" class="text-oasis-500 hover:underline">Configuration</a> below.
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- ── Prerequisites ──────────────────────────────── -->
           <div id="prerequisites" class="mb-16 scroll-mt-24">
@@ -124,7 +197,7 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
-                <span><strong class="text-charcoal">(For voice agents) STT &amp; TTS keys</strong>. Deepgram for speech-to-text, ElevenLabs for text-to-speech. Not needed for voice-to-voice models (OpenAI Realtime, Gemini Live) or text chat agents.</span>
+                <span><strong class="text-charcoal">(For voice agents) STT &amp; TTS</strong>. Modular voice pipelines need speech-to-text and text-to-speech. Options: OpenAI (Whisper + TTS), Deepgram + ElevenLabs, or self-hosted servers (Speaches, Kokoro, Piper, etc.). Not needed for voice-to-voice models (OpenAI Realtime, Gemini Live) or text chat agents.</span>
               </li>
             </ul>
 
@@ -231,6 +304,12 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
             <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
               <span class="text-oasis-500">#</span> Your First Agent
             </h2>
+            <div class="bg-oasis-50/50 rounded-xl border border-oasis-100/60 p-4 text-sm text-slate-custom mb-6">
+              <strong class="text-charcoal">Quick start:</strong> Instead of configuring from scratch, you can pick a
+              <a href="#templates" class="text-oasis-500 hover:underline font-medium">research template</a> to
+              get a working agent in one click. Templates ship with a system prompt, model defaults, and
+              sensible settings — just tweak to taste.
+            </div>
             <ol class="space-y-4 text-slate-custom text-sm leading-relaxed">
               <li class="flex items-start gap-3">
                 <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
@@ -242,7 +321,7 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
-                <span>Inside the study, click <strong class="text-charcoal">New Agent</strong>. Choose <strong class="text-charcoal">Voice</strong> or <strong class="text-charcoal">Text</strong> modality.</span>
+                <span>Inside the study, click <strong class="text-charcoal">New Agent</strong> (or choose a template). Select <strong class="text-charcoal">Voice</strong> or <strong class="text-charcoal">Text</strong> modality.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-6 h-6 rounded-full bg-oasis-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
@@ -259,11 +338,73 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
             </ol>
           </div>
 
-          <!-- ── Structured Interviews ──────────────────────── -->
-          <div id="structured" class="mb-16 scroll-mt-24">
+          <!-- ── Agent Templates ───────────────────────────── -->
+          <div id="templates" class="mb-16 scroll-mt-24">
             <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
-              <span class="text-oasis-500">#</span> Structured Interviews
+              <span class="text-oasis-500">#</span> Agent Templates
             </h2>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Templates are curated starter agents that get you from "I just installed this" to "I have a
+              working interview" in under a minute. Each one ships with a system prompt, welcome message,
+              model/pipeline defaults, and (where appropriate) a structured interview guide.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Pick a template from the dashboard when creating an agent. The agent lands as
+              <strong class="text-charcoal">Active</strong> immediately — you can edit or pause it any time.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-oasis-100">
+                    <th class="text-left py-2 pr-4 font-semibold text-charcoal">Template</th>
+                    <th class="text-left py-2 pr-4 font-semibold text-charcoal">Modality</th>
+                    <th class="text-left py-2 font-semibold text-charcoal">Use Case</th>
+                  </tr>
+                </thead>
+                <tbody class="text-slate-custom">
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-3 pr-4 font-medium text-charcoal">Semi-Structured Qualitative</td>
+                    <td class="py-3 pr-4">Voice</td>
+                    <td class="py-3">Open-ended qualitative research — lived-experience, attitudes, exploratory work</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-3 pr-4 font-medium text-charcoal">Cognitive Interview / Pretest</td>
+                    <td class="py-3 pr-4">Voice</td>
+                    <td class="py-3">Pretesting survey items with think-aloud probes (comprehension, recall, judgment, response)</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-3 pr-4 font-medium text-charcoal">Structured Topic Guide</td>
+                    <td class="py-3 pr-4">Voice</td>
+                    <td class="py-3">Fixed protocol with ordered questions, probes, and auto-advance — comparative qualitative work</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-3 pr-4 font-medium text-charcoal">Open-Ended Follow-Up</td>
+                    <td class="py-3 pr-4">Text</td>
+                    <td class="py-3">Post-survey follow-up via text chat — embed at the end of a Qualtrics/REDCap/LimeSurvey questionnaire</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-charcoal">Conversational Phone Survey</td>
+                    <td class="py-3 pr-4">Voice (V2V)</td>
+                    <td class="py-3">Low-latency telephone surveys via Twilio — CATI-style, uses OpenAI Realtime</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-slate-custom text-sm leading-relaxed mt-4">
+              All templates default to OpenAI models so anyone with just an <code>OPENAI_API_KEY</code> in
+              <code>.env</code> can start immediately. Swap the provider in the agent form afterwards.
+            </p>
+          </div>
+
+          <!-- ── Structured Interviews ──────────────────────── -->
+          <details id="structured" class="docs-collapsible mb-16 scroll-mt-24" open>
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              <span class="text-oasis-500">#</span> Structured Interviews
+            </summary>
+            <div class="pl-7">
             <p class="text-slate-custom text-sm leading-relaxed mb-4">
               For semi-structured protocols, set the Interview Mode to <strong class="text-charcoal">Structured</strong>
               when creating an agent. You can then define an interview guide with ordered questions, follow-up probes,
@@ -280,13 +421,16 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
               The agent will follow the guide as a backbone but can adapt naturally. It probes when appropriate,
               moves on after the configured number of follow-ups, and uses transition messages between questions.
             </p>
-          </div>
+            </div>
+          </details>
 
           <!-- ── Text Chat Agents ───────────────────────────── -->
-          <div id="text-agents" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="text-agents" class="docs-collapsible mb-16 scroll-mt-24" open>
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> Text Chat Agents
-            </h2>
+            </summary>
+            <div class="pl-7">
             <p class="text-slate-custom text-sm leading-relaxed mb-4">
               When you select <strong class="text-charcoal">Text</strong> as the modality, the agent conducts
               interviews via a chat interface instead of voice. No STT or TTS keys are needed.
@@ -305,13 +449,56 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
                 <span>Works with any chat-compatible LLM (GPT-4.1, Claude, Gemini, etc.).</span>
               </li>
             </ul>
-          </div>
+            </div>
+          </details>
+
+          <!-- ── Participant Tracking ─────────────────────────── -->
+          <details id="participants" class="docs-collapsible mb-16 scroll-mt-24" open>
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              <span class="text-oasis-500">#</span> Participant Tracking
+            </summary>
+            <div class="pl-7">
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Each agent has a <strong class="text-charcoal">Participant ID mode</strong> that controls how
+              sessions are linked to individual participants. Pick the mode that fits your study design:
+            </p>
+
+            <div class="space-y-4">
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Random (default)</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  The system generates a random identifier for each session. No participant management needed.
+                  Good for anonymous studies or quick pilots.
+                </p>
+              </div>
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Predefined</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  Upload a list of participant identifiers in the dashboard (individually or in bulk).
+                  Distribute personalised links like <code>/interview/&#123;widget_key&#125;?pid=ABC123</code>.
+                  Each identifier can only be used once. You can release a used identifier if you need to let
+                  someone retake.
+                </p>
+              </div>
+              <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Input</h3>
+                <p class="text-xs text-slate-custom leading-relaxed">
+                  Participants type their own identifier (e.g. a panel ID or email) before the interview starts.
+                  Useful for linking to an external survey platform where participants already have an ID.
+                </p>
+              </div>
+            </div>
+            </div>
+          </details>
 
           <!-- ── Model Selection ────────────────────────────── -->
-          <div id="models" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="models" class="docs-collapsible mb-16 scroll-mt-24" open>
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> Model Selection
-            </h2>
+            </summary>
+            <div class="pl-7">
             <p class="text-slate-custom text-sm leading-relaxed mb-4">
               OASIS uses <a href="https://docs.litellm.ai" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">LiteLLM</a>
               under the hood, which means you can use virtually any LLM provider with a unified API format.
@@ -332,28 +519,100 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
                   </tr>
                   <tr class="border-b border-oasis-50">
                     <td class="py-3 pr-4 font-medium text-charcoal">Modular (STT→LLM→TTS)</td>
-                    <td class="py-3">GPT-4.1, GPT-5, Claude 3.5/4, Gemini 2.5, Mistral, Scaleway, or any LiteLLM-compatible model</td>
+                    <td class="py-3">
+                      <strong class="text-charcoal">LLM:</strong> GPT-4.1, GPT-5, Claude 3.5/4, Gemini 2.5, Mistral, Scaleway, custom endpoints, or any LiteLLM-compatible model<br/>
+                      <strong class="text-charcoal">STT:</strong> OpenAI Whisper, Deepgram, or self-hosted (OpenAI-compatible)<br/>
+                      <strong class="text-charcoal">TTS:</strong> OpenAI TTS, ElevenLabs, or self-hosted (OpenAI-compatible)
+                    </td>
                   </tr>
                   <tr>
                     <td class="py-3 pr-4 font-medium text-charcoal">Text Chat</td>
-                    <td class="py-3">Same as Modular, any chat-completion compatible model</td>
+                    <td class="py-3">Same as Modular LLM options — any chat-completion compatible model</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
             <div class="mt-4 bg-oasis-50/50 rounded-xl border border-oasis-100/60 p-4 text-sm text-slate-custom">
-              <strong class="text-charcoal">💡 Custom models:</strong> Select "Custom" in the model dropdown
+              <strong class="text-charcoal">Custom models:</strong> Select "Custom" in the model dropdown
               and enter any valid <a href="https://docs.litellm.ai/docs/providers" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">LiteLLM model identifier</a>
               (e.g., <code>azure/my-gpt4-deployment</code> or <code>vertex_ai/gemini-pro</code>).
+              For fully self-hosted LLMs, set <code>OPENAI_COMPATIBLE_LLM_URL</code> in <code>.env</code>
+              and use model names starting with <code>custom/</code>.
             </div>
-          </div>
+            </div>
+          </details>
+
+          <!-- ── Self-Hosted STT/TTS ─────────────────────────── -->
+          <details id="self-hosted-stt-tts" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              <span class="text-oasis-500">#</span> Self-Hosted STT/TTS
+            </summary>
+            <div class="pl-7">
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              If you want to keep audio processing on your own infrastructure — or just avoid third-party API
+              costs — you can point OASIS at any server that speaks the OpenAI STT/TTS protocol.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Compatible servers include <strong class="text-charcoal">Speaches</strong> (faster-whisper),
+              <strong class="text-charcoal">Kokoro</strong>, <strong class="text-charcoal">Piper</strong>,
+              <strong class="text-charcoal">LocalAI</strong>, and similar projects.
+              Set the following in <code>.env</code>:
+            </p>
+            <ul class="space-y-2 text-slate-custom text-sm leading-relaxed mb-4">
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><code>SELF_HOSTED_STT_URL</code> — base URL of your STT server (e.g. <code>http://my-server:8000/v1</code>)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><code>SELF_HOSTED_TTS_URL</code> — base URL of your TTS server</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-oasis-500 mt-1 flex-shrink-0">•</span>
+                <span><code>SELF_HOSTED_STT_MODEL</code> / <code>SELF_HOSTED_TTS_MODEL</code> — model name the server expects (defaults to <code>whisper-1</code> and <code>tts-1</code>)</span>
+              </li>
+            </ul>
+            <p class="text-slate-custom text-sm leading-relaxed">
+              Then select "Self-Hosted" as the STT or TTS provider in the agent form. API keys are optional —
+              most local servers don't require them.
+            </p>
+            </div>
+          </details>
+
+          <!-- ── EU Data Residency ────────────────────────────── -->
+          <details id="eu-residency" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              <span class="text-oasis-500">#</span> EU Data Residency
+            </summary>
+            <div class="pl-7">
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              For GDPR-sensitive studies, OASIS supports routing all OpenAI traffic through the
+              <a href="https://developers.openai.com/api/docs/guides/your-data" target="_blank" rel="noopener" class="text-oasis-500 hover:underline">EU regional endpoint</a>
+              (<code>eu.api.openai.com</code>). This covers chat completions, Realtime, STT, TTS, and embeddings.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              Set <code>OPENAI_USE_EU=true</code> in <code>.env</code> (or toggle it in the dashboard Settings
+              under feature flags). This requires that the OpenAI project tied to your API key has data-residency
+              enabled and a Zero Data Retention or Modified Abuse Monitoring amendment in place.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed">
+              For non-OpenAI providers, you can use <strong class="text-charcoal">Scaleway</strong> (EU-based
+              LLM-as-a-Service), <strong class="text-charcoal">self-hosted models</strong>, or any provider
+              that meets your institutional data-handling requirements.
+            </p>
+            </div>
+          </details>
 
           <!-- ── Deployment Options ─────────────────────────── -->
-          <div id="deployment" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="deployment" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> Deployment Options
-            </h2>
+            </summary>
+            <div class="pl-7">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-off-white rounded-xl border border-oasis-100/40 p-5">
@@ -385,13 +644,16 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
                 </p>
               </div>
             </div>
-          </div>
+            </div>
+          </details>
 
           <!-- ── Authentication ─────────────────────────────── -->
-          <div id="auth" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="auth" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> Authentication
-            </h2>
+            </summary>
+            <div class="pl-7">
             <p class="text-slate-custom text-sm leading-relaxed mb-4">
               Authentication is <strong class="text-charcoal">off by default</strong>. To enable basic login protection for the dashboard:
             </p>
@@ -400,13 +662,16 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
               Then recreate the backend container: <code>docker compose up -d --force-recreate backend</code>.
               Interview links remain publicly accessible. Authentication only protects the admin dashboard.
             </p>
-          </div>
+            </div>
+          </details>
 
           <!-- ── Telephony ──────────────────────────────────── -->
-          <div id="telephony" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="telephony" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> Telephony (Twilio)
-            </h2>
+            </summary>
+            <div class="pl-7">
 
             <div class="bg-sand-100/50 rounded-xl border border-sand-200/60 p-4 text-sm text-slate-custom mb-4">
               <strong class="text-sand-700">⚠️ Beta:</strong> Telephony integration is currently in beta.
@@ -424,30 +689,44 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
               The backend exposes a TwiML webhook that Twilio calls when someone dials your number.
               Audio is streamed over WebSockets using Pipecat's <code>TwilioFrameSerializer</code>.
             </p>
-          </div>
+            </div>
+          </details>
 
           <!-- ── RAG ────────────────────────────────────────── -->
-          <div id="rag" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="rag" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> Knowledge Base (RAG)
-            </h2>
+            </summary>
+            <div class="pl-7">
             <p class="text-slate-custom text-sm leading-relaxed mb-4">
               Upload documents to a study's knowledge base to give your agent context about the research topic.
-              Documents are chunked, embedded using OpenAI's <code>text-embedding-3-small</code>, and stored in
-              PostgreSQL via pgvector for similarity search.
+              Documents are chunked, embedded, and stored in PostgreSQL via pgvector for similarity search.
+            </p>
+            <p class="text-slate-custom text-sm leading-relaxed mb-4">
+              By default, embeddings use OpenAI's <code>text-embedding-3-small</code> (1536 dimensions).
+              To use a self-hosted embedding server instead, set <code>EMBEDDING_API_URL</code> in <code>.env</code>
+              — any OpenAI-compatible endpoint works (e.g. LocalAI, TEI, vLLM).
             </p>
             <p class="text-slate-custom text-sm leading-relaxed">
-              During an interview, the agent can query the knowledge base to retrieve relevant context before
-              generating a response. This is especially useful for topic-specific interviews where the agent
+              During an interview, the agent queries the knowledge base to retrieve relevant context before
+              generating a response. Useful for topic-specific interviews where the agent
               needs factual grounding.
             </p>
-          </div>
+            <div class="mt-4 bg-sand-100/50 rounded-xl border border-sand-200/60 p-4 text-sm text-slate-custom">
+              <strong class="text-sand-700">Note:</strong> The database schema expects 1536-dimensional vectors.
+              If your embedding model outputs a different dimension, you'll need a database migration.
+            </div>
+            </div>
+          </details>
 
           <!-- ── API Reference ──────────────────────────────── -->
-          <div id="api-reference" class="mb-16 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2">
+          <details id="api-reference" class="docs-collapsible mb-16 scroll-mt-24">
+            <summary class="text-2xl font-bold text-charcoal mb-4 flex items-center gap-2 cursor-pointer select-none list-none">
+              <svg class="docs-chevron w-5 h-5 text-oasis-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
               <span class="text-oasis-500">#</span> API Reference
-            </h2>
+            </summary>
+            <div class="pl-7">
             <p class="text-slate-custom text-sm leading-relaxed mb-4">
               The FastAPI backend serves auto-generated OpenAPI documentation. Once your instance is running:
             </p>
@@ -486,6 +765,21 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
                     <td class="py-2 font-sans">Create an agent</td>
                   </tr>
                   <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">GET</span></td>
+                    <td class="py-2 pr-4">/api/templates</td>
+                    <td class="py-2 font-sans">List agent templates</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">GET</span></td>
+                    <td class="py-2 pr-4">/api/.../sessions/&#123;id&#125;</td>
+                    <td class="py-2 font-sans">Session detail with transcript</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
+                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">GET</span></td>
+                    <td class="py-2 pr-4">/api/.../sessions/export/csv</td>
+                    <td class="py-2 font-sans">Export sessions as CSV</td>
+                  </tr>
+                  <tr class="border-b border-oasis-50">
                     <td class="py-2 pr-4"><span class="bg-sand-300 text-sand-700 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">WS</span></td>
                     <td class="py-2 pr-4">/ws/interview/&#123;widget_key&#125;</td>
                     <td class="py-2 font-sans">Voice interview WebSocket</td>
@@ -496,14 +790,15 @@ TWILIO_PHONE_NUMBER=<span class="text-sand-400">+1234567890</span>`;
                     <td class="py-2 font-sans">Text chat WebSocket</td>
                   </tr>
                   <tr>
-                    <td class="py-2 pr-4"><span class="bg-oasis-100 text-oasis-600 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">GET</span></td>
-                    <td class="py-2 pr-4">/api/sessions/&#123;id&#125;/transcript</td>
-                    <td class="py-2 font-sans">Get diarised transcript</td>
+                    <td class="py-2 pr-4"><span class="bg-sand-300 text-sand-700 px-1.5 py-0.5 rounded text-xs font-sans font-semibold">WS</span></td>
+                    <td class="py-2 pr-4">/ws/monitor/&#123;session_id&#125;</td>
+                    <td class="py-2 font-sans">Live transcript stream (dashboard)</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </div>
+            </div>
+          </details>
 
         </div>
       </div>

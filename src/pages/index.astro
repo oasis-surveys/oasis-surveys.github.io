@@ -92,7 +92,7 @@ import Base from '../layouts/Base.astro';
             🏠 Self-Hosted
           </span>
           <span class="inline-flex items-center gap-1.5 bg-sand-100 text-sand-700 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-sand-200/50">
-            🆓 Free &amp; Non-Commercial
+            📄 AGPL-3.0 Licensed
           </span>
         </div>
       </div>
@@ -635,7 +635,8 @@ import Base from '../layouts/Base.astro';
               <p class="text-xs font-bold text-sand-700 uppercase tracking-wider">Open Source / Self-Hosted</p>
             </div>
             <div class="flex flex-wrap gap-1.5">
-              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2.5 py-1 rounded-full">Your Own Models</span>
+              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2.5 py-1 rounded-full">Your Own LLMs</span>
+              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2.5 py-1 rounded-full">Self-Hosted STT/TTS</span>
               <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2.5 py-1 rounded-full">Vertex AI</span>
               <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2.5 py-1 rounded-full">Azure OpenAI</span>
               <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2.5 py-1 rounded-full border border-sand-300">100% Private</span>
@@ -1038,18 +1039,19 @@ import Base from '../layouts/Base.astro';
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-10">
         <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">License</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Open Source, Transparent Research</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">Open Source, AGPL-3.0 Licensed</h2>
       </div>
 
       <div class="bg-white rounded-2xl border border-oasis-100/60 p-8">
         <p class="text-slate-custom leading-relaxed mb-4">
-          OASIS is released under a <strong class="text-charcoal">non-commercial research license</strong>.
-          You are free to use, modify, and share OASIS for academic and research purposes.
+          OASIS is released under the <strong class="text-charcoal">GNU Affero General Public License v3.0 (AGPL-3.0)</strong>.
+          You are free to use, modify, and distribute OASIS. If you run a modified version as a network service,
+          you must make your source code available under the same license.
         </p>
         <ul class="space-y-2 text-sm text-slate-custom mb-6">
           <li class="flex items-start gap-2">
             <span class="text-oasis-500 mt-0.5">✓</span>
-            Use freely for academic research and teaching
+            Use freely for academic research, teaching, and non-profit work
           </li>
           <li class="flex items-start gap-2">
             <span class="text-oasis-500 mt-0.5">✓</span>
@@ -1060,12 +1062,12 @@ import Base from '../layouts/Base.astro';
             Contribute improvements back to the community
           </li>
           <li class="flex items-start gap-2">
-            <span class="text-terracotta mt-0.5">✗</span>
-            Commercial use without explicit approval
+            <span class="text-oasis-500 mt-0.5">✓</span>
+            Commercial use permitted under AGPL terms
           </li>
           <li class="flex items-start gap-2">
             <span class="text-terracotta mt-0.5">✗</span>
-            Funding applications built on OASIS without author consent
+            Closed-source redistribution or proprietary network services without releasing your changes
           </li>
         </ul>
 
