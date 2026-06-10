@@ -430,7 +430,7 @@ import Base from '../layouts/Base.astro';
           </div>
           <h3 class="font-semibold text-charcoal text-lg mb-2">Research-Grade Output</h3>
           <p class="text-sm text-slate-custom leading-relaxed">
-            Diarised transcripts, session analytics, token usage, timestamps, all stored in PostgreSQL. Export your data whenever you need it.
+            Diarised transcripts, per-turn engagement metrics, session analytics, token usage, timestamps, all stored in PostgreSQL. Export your data whenever you need it.
           </p>
         </div>
       </div>
@@ -439,9 +439,124 @@ import Base from '../layouts/Base.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════
+       ADAPTIVE INTERVIEWS
+       ════════════════════════════════════════════════════════════ -->
+  <section id="adaptive" class="py-24 bg-off-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">New</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-charcoal">An Interviewer That Notices</h2>
+        <p class="mt-4 text-slate-custom max-w-2xl mx-auto">
+          Survey bots usually read their script no matter how the interview is going.
+          OASIS measures how each answer lands and can react to it, with rules you write,
+          read, and audit.
+        </p>
+      </div>
+
+      <!-- Signal → Policy → Action flow -->
+      <div class="bg-white rounded-2xl border-2 border-oasis-200/80 p-6 md:p-8 shadow-sm mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+          <!-- Step 1: Measure -->
+          <div class="bg-off-white rounded-xl border border-oasis-100/60 p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-sm font-bold">1</div>
+              <h4 class="font-semibold text-charcoal text-sm">Measure every turn</h4>
+            </div>
+            <p class="text-xs text-slate-custom leading-relaxed mb-3">
+              Response latency, answer length, speech rate, fillers, audio energy.
+              Scored 0 to 1 by transparent rules. No model, no training data.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">latency</span>
+              <span class="text-[10px] font-mono font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">length</span>
+              <span class="text-[10px] font-mono font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">rate</span>
+              <span class="text-[10px] font-mono font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">fillers</span>
+              <span class="text-[10px] font-mono font-medium bg-oasis-50 text-oasis-600 px-2 py-0.5 rounded-full">energy</span>
+            </div>
+          </div>
+
+          <!-- Step 2: Decide -->
+          <div class="bg-off-white rounded-xl border border-oasis-100/60 p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-sm font-bold">2</div>
+              <h4 class="font-semibold text-charcoal text-sm">Match against your rules</h4>
+            </div>
+            <p class="text-xs text-slate-custom leading-relaxed mb-3">
+              A small per-agent policy maps triggers to actions. Three flat turns in a row?
+              Very short answers? You decide what counts and what happens next.
+            </p>
+            <div class="bg-charcoal rounded-lg p-3 font-mono text-[10px] leading-relaxed">
+              <span class="text-oasis-300">when</span> <span class="text-white/80">sustained_disengagement</span><br/>
+              <span class="text-oasis-300">then</span> <span class="text-sand-400">offer_break</span>
+            </div>
+          </div>
+
+          <!-- Step 3: Act -->
+          <div class="bg-off-white rounded-xl border border-oasis-100/60 p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-oasis-100 text-oasis-500 flex items-center justify-center text-sm font-bold">3</div>
+              <h4 class="font-semibold text-charcoal text-sm">Act, or just log</h4>
+            </div>
+            <p class="text-xs text-slate-custom leading-relaxed mb-3">
+              Offer a break, soften the next question, mirror the participant's style,
+              or slow the agent's voice down. The injected text is editable per rule,
+              like a prompt template.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">offer a break</span>
+              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">soften question</span>
+              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">match style</span>
+              <span class="text-[10px] font-medium bg-sand-100 text-sand-700 px-2 py-0.5 rounded-full">adjust pace</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shadow mode + audit trail -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-charcoal/5 text-charcoal flex items-center justify-center text-base">🕶️</div>
+            <h4 class="font-semibold text-charcoal text-sm">Shadow mode by default</h4>
+          </div>
+          <p class="text-xs text-slate-custom leading-relaxed">
+            New policies start in shadow mode: the engine logs what it would have done
+            without changing anything for the participant. Test on real sessions, review
+            the log, then flip to live when you trust it.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl border border-oasis-100/60 p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-charcoal/5 text-charcoal flex items-center justify-center text-base">📋</div>
+            <h4 class="font-semibold text-charcoal text-sm">Everything on the record</h4>
+          </div>
+          <p class="text-xs text-slate-custom leading-relaxed">
+            Every trigger and action is stored with the session and included in exports,
+            and adaptive sessions are flagged. You can report exactly what the agent did
+            differently and for whom. That is what makes this usable in actual research.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="/docs#adaptive"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-oasis-500 hover:text-oasis-600 transition-colors"
+        >
+          How adaptive behavior works
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
        ARCHITECTURE
        ════════════════════════════════════════════════════════════ -->
-  <section id="architecture" class="py-24 bg-off-white">
+  <section id="architecture" class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <p class="text-sm font-semibold text-oasis-500 uppercase tracking-wider mb-2">Under the Hood</p>
